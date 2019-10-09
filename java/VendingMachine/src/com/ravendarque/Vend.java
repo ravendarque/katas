@@ -1,9 +1,21 @@
 package com.ravendarque;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Vend {
 
-    double calculateTotal() {
+    private List<Item> items = new ArrayList<>();
 
-        return 0;
+    void addItem(Item item) {
+
+        items.add(item);
+    }
+
+    double calculateTotalPrice() {
+
+        return items.stream()
+                    .mapToDouble(Item::getPrice)
+                    .sum();
     }
 }

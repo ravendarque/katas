@@ -50,7 +50,7 @@ class VendShould {
 
         Credit credit = new Credit();
 
-        assertThrows(Exception.class, () -> vend.processTransaction(credit));
+        assertThrows(InsufficientCreditException.class, () -> vend.processTransaction(credit));
     }
 
     @Test
@@ -60,7 +60,6 @@ class VendShould {
 
         Credit credit = new Credit();
 
-        assertThrows(Exception.class, () -> vend.processTransaction(credit));
+        assertThrows(NoItemsInVendException.class, () -> vend.processTransaction(credit));
     }
-
 }

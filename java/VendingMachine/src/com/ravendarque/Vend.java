@@ -23,9 +23,9 @@ class Vend {
             throws Exception {
 
         if (items.isEmpty())
-            throw new Exception("No items selected");
+            throw new NoItemsInVendException();
 
         if (credit.getValue() < calculateTotalPrice())
-            throw new Exception("Insufficient credit for transaction");
+            throw new InsufficientCreditException();
     }
 }

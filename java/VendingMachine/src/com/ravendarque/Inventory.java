@@ -7,6 +7,11 @@ class Inventory {
 
     private final ArrayList<Item> items = new ArrayList<>();
 
+    void removeItem(Item item) {
+
+        items.remove(item);
+    }
+
     void addItem(Item testItem) {
 
         items.add(testItem);

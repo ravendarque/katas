@@ -9,11 +9,24 @@ class ItemShould {
     @Test
     void ProvideADisplayName() {
 
-        String expectedItemName = "Test Item";
-        Item testItem = new Item(expectedItemName);
+        String expectedDisplayName = "Test Item";
+        int dummyPrice = 0;
+        Item testItem = new Item(expectedDisplayName, dummyPrice);
 
-        String actualItemName = testItem.getDisplayName();
+        String actualDisplayName = testItem.getDisplayName();
 
-        assertEquals(expectedItemName, actualItemName);
+        assertEquals(expectedDisplayName, actualDisplayName);
+    }
+
+    @Test
+    void ProvideAPrice() {
+
+        String dummyName = "Test Item";
+        double expectedPrice = 1.00;
+        Item item = new Item(dummyName, 1.00);
+
+        double actualPrice = item.getPrice();
+
+        assertEquals(expectedPrice, actualPrice);
     }
 }

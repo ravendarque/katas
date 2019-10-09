@@ -19,8 +19,13 @@ class Vend {
                     .sum();
     }
 
-    void processTransaction(Credit credit) {
+    void processTransaction(Credit credit)
+            throws Exception {
 
+        if (items.isEmpty())
+            throw new Exception("No items selected");
 
+        if (credit.getValue() < calculateTotalPrice())
+            throw new Exception("Insufficient credit for transaction");
     }
 }

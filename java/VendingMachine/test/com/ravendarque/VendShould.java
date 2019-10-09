@@ -3,6 +3,7 @@ package com.ravendarque;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class VendShould {
 
@@ -35,6 +36,31 @@ class VendShould {
         double actualTotalPrice = vend.calculateTotalPrice();
 
         assertEquals(expectedTotalPrice, actualTotalPrice);
+    }
+
+    @Test
+    void throwExceptionWhenProcessingTransactionWithCreditLessThanSelectedItems() {
+
+        Vend vend = new Vend();
+        String dummyItemName = "Test item";
+        double testPrice = 1;
+
+        Item testItem = new Item(dummyItemName, testPrice);
+        vend.addItem(testItem);
+
+        Credit credit = new Credit();
+
+        assertThrows(Exception.class, () -> vend.processTransaction(credit));
+    }
+
+    @Test
+    void throwExceptionWhenProcessingTransactionWithNoSelectedItems() {
+
+        Vend vend = new Vend();
+
+        Credit credit = new Credit();
+
+        assertThrows(Exception.class, () -> vend.processTransaction(credit));
     }
 
 }

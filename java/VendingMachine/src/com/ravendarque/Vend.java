@@ -18,4 +18,9 @@ class Vend {
                     .mapToDouble(Item::getPrice)
                     .sum();
     }
+
+    void processTransaction(Credit credit) {
+
+
+    }
 }

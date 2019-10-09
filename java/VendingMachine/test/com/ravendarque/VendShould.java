@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class VendShould {
 
     @Test
-    void CalculateTotalPriceOfSelectedItemsAsZeroWithNoItemsSelected() {
+    void calculateTotalPriceOfSelectedItemsAsZeroWithNoItemsSelected() {
 
         double expectedTotalPrice = 0;
 
@@ -19,7 +19,7 @@ class VendShould {
     }
 
     @Test
-    void CalculateTotalPriceOfSelectedItemsWithTwoItemsSelected() {
+    void calculateTotalPriceOfSelectedItemsWithTwoItemsSelected() {
 
         double expectedTotalPrice = 2;
 
@@ -36,4 +36,5 @@ class VendShould {
 
         assertEquals(expectedTotalPrice, actualTotalPrice);
     }
+
 }

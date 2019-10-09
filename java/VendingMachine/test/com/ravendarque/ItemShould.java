@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ItemShould {
 
     @Test
-    void ProvideADisplayName() {
+    void provideADisplayName() {
 
         String expectedDisplayName = "Test Item";
         int dummyPrice = 0;
@@ -20,7 +20,7 @@ class ItemShould {
     }
 
     @Test
-    void ProvideAPrice() {
+    void provideAPrice() {
 
         String dummyName = "Test Item";
         double expectedPrice = 1.00;
@@ -32,7 +32,7 @@ class ItemShould {
     }
 
     @Test
-    void ThrowIllegalArgumentExceptionWhenNameIsEmpty() {
+    void throwIllegalArgumentExceptionWhenNameIsEmpty() {
 
         String emptyDisplayName = "";
         double dummyPrice = 0;
@@ -41,7 +41,7 @@ class ItemShould {
     }
 
     @Test
-    void ThrowIllegalArgumentExceptionWhenNameIsNull() {
+    void throwIllegalArgumentExceptionWhenNameIsNull() {
 
         String emptyDisplayName = null;
         double dummyPrice = 0;
@@ -50,7 +50,7 @@ class ItemShould {
     }
 
     @Test
-    void ThrowIllegalArgumentExceptionWhenPriceIsNegative() {
+    void throwIllegalArgumentExceptionWhenPriceIsNegative() {
 
         String dummyDisplayName = "Test item";
         double negativePrice = -1;

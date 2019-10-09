@@ -3,7 +3,6 @@ package com.ravendarque;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class InventoryShould {
 
     @Test
-    void ProvideEmptyInventoryListWhenNoItemsInInventory() {
+    void provideEmptyInventoryListWhenNoItemsInInventory() {
 
         Inventory inventory = new Inventory();
         List<Item> actualInventoryList = inventory.getItems();
@@ -21,7 +20,7 @@ class InventoryShould {
     }
 
     @Test
-    void ProvideOneItemInInventoryListWhenOneItemIsInInventory() {
+    void provideOneItemInInventoryListWhenOneItemIsInInventory() {
 
         String dummyName = "Test item";
         double dummyPrice = 0;
@@ -38,7 +37,7 @@ class InventoryShould {
     }
 
     @Test
-    void ProvideEmptyInventoryListWhenOneItemIsAddedThenRemoved() {
+    void provideEmptyInventoryListWhenOneItemIsAddedThenRemoved() {
 
         String dummyName = "Test item";
         double dummyPrice = 0;
@@ -54,8 +53,7 @@ class InventoryShould {
     }
 
     @Test
-    void ReturnOnlyDrinkItemsWhenQueriedForDrinkItems() {
-
+    void returnOnlyDrinkItemsWhenQueriedForDrinkItems() {
 
         String testDrinkItemDisplayName = "Test drink item";
         double dummyDrinkItemPrice = 0;

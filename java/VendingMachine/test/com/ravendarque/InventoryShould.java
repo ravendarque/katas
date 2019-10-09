@@ -52,4 +52,28 @@ class InventoryShould {
 
         assertTrue(actualInventoryList.isEmpty());
     }
+
+    @Test
+    void ReturnOnlyDrinkItemsWhenQueriedForDrinkItems() {
+
+
+        String testDrinkItemDisplayName = "Test drink item";
+        double dummyDrinkItemPrice = 0;
+        Drink testDrinkItem = new Drink(testDrinkItemDisplayName, dummyDrinkItemPrice);
+
+        String testOtherItemDisplayName = "Test other item";
+        double dummyOtherItemPrice = 0;
+        Item testOtherItem = new Item(testOtherItemDisplayName, dummyOtherItemPrice);
+
+        List<Item> expectedInventoryList = new ArrayList<>();
+        expectedInventoryList.add(testDrinkItem);
+
+        Inventory testInventory = new Inventory();
+        testInventory.addItem(testDrinkItem);
+        testInventory.addItem(testOtherItem);
+
+        List<Item> actualInventoryList = testInventory.getItemsByType(Drink.class);
+
+        assertEquals(expectedInventoryList, actualInventoryList);
+    }
 }

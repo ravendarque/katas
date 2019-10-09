@@ -33,9 +33,18 @@ class ItemShould {
     }
 
     @Test
-    void ThrowInvalidArgumentExceptionWhenNameIsEmpty() {
+    void ThrowIllegalArgumentExceptionWhenNameIsEmpty() {
 
         String emptyDisplayName = "";
+        double dummyPrice = 0;
+
+        assertThrows(IllegalArgumentException.class, () -> new Item(emptyDisplayName, dummyPrice));
+    }
+
+    @Test
+    void ThrowIllegalArgumentExceptionWhenNameIsNull() {
+
+        String emptyDisplayName = null;
         double dummyPrice = 0;
 
         assertThrows(IllegalArgumentException.class, () -> new Item(emptyDisplayName, dummyPrice));

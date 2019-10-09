@@ -13,12 +13,6 @@ class Item {
         this.price = price;
     }
 
-    private void validateDisplayName(String displayName) {
-
-        if (displayName.equals(""))
-            throw new IllegalArgumentException("Display name cannot be empty");
-    }
-
     double getPrice() {
 
         return price;
@@ -27,5 +21,14 @@ class Item {
     String getDisplayName() {
 
         return displayName;
+    }
+
+    private void validateDisplayName(String displayName) {
+
+        if (displayName == null)
+            throw new IllegalArgumentException("Display name cannot be null");
+
+        if (displayName.equals(""))
+            throw new IllegalArgumentException("Display name cannot be empty");
     }
 }

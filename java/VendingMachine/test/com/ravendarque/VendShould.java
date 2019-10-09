@@ -62,4 +62,37 @@ class VendShould {
 
         assertThrows(NoItemsInVendException.class, () -> vend.processTransaction(credit));
     }
+
+    @Test
+    void returnFalseWhenValidatingVendWithInsufficientCredit() {
+
+        boolean expectedResult = false;
+
+        Credit credit = new Credit();
+
+        String dummyItemName = "Test item";
+        double testPrice = 1;
+
+        Vend vend = new Vend();
+        vend.addItem(new Item(dummyItemName, testPrice));
+
+        boolean actualResult = vend.validateTransaction(credit);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void returnFalseWhenValidatingVendWithNoItemsAdded() {
+
+        boolean expectedResult = false;
+
+        Credit credit = new Credit();
+
+        Vend vend = new Vend();
+
+        boolean actualResult = vend.validateTransaction(credit);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
 }

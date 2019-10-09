@@ -7,6 +7,11 @@ class Vend {
 
     private List<Item> items = new ArrayList<>();
 
+    boolean validateTransaction(Credit credit) {
+
+        return itemsAreValidForTransaction() && creditIsValidForTransaction(credit);
+    }
+
     void addItem(Item item) {
 
         items.add(item);
@@ -22,10 +27,20 @@ class Vend {
     void processTransaction(Credit credit)
             throws Exception {
 
-        if (items.isEmpty())
+        if (!itemsAreValidForTransaction())
             throw new NoItemsInVendException();
 
-        if (credit.getValue() < calculateTotalPrice())
+        if (!creditIsValidForTransaction(credit))
             throw new InsufficientCreditException();
+    }
+
+    private boolean creditIsValidForTransaction(Credit credit) {
+
+        return credit.getValue() >= calculateTotalPrice();
+    }
+
+    private boolean itemsAreValidForTransaction() {
+
+        return !items.isEmpty();
     }
 }

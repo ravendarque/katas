@@ -8,9 +8,17 @@ class Item {
     Item(String displayName, double price) {
 
         validateDisplayName(displayName);
+        validatePrice(price);
 
         this.displayName = displayName;
         this.price = price;
+    }
+
+    private void validatePrice(double price) {
+
+        if (price < 0)
+            throw new IllegalArgumentException("Price cannot be negative");
+
     }
 
     double getPrice() {

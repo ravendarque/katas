@@ -1,6 +1,5 @@
 package com.ravendarque;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,5 +47,14 @@ class ItemShould {
         double dummyPrice = 0;
 
         assertThrows(IllegalArgumentException.class, () -> new Item(emptyDisplayName, dummyPrice));
+    }
+
+    @Test
+    void ThrowIllegalArgumentExceptionWhenPriceIsNegative() {
+
+        String dummyDisplayName = "Test item";
+        double negativePrice = -1;
+
+        assertThrows(IllegalArgumentException.class, () -> new Item(dummyDisplayName, negativePrice));
     }
 }

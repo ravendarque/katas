@@ -1,6 +1,6 @@
 package com.ravendarque;
 
-import javafx.scene.chart.Axis;
+import com.ravendarque.credit.Credit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

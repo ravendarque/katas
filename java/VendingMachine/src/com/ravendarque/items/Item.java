@@ -1,11 +1,11 @@
-package com.ravendarque;
+package com.ravendarque.items;
 
-class Item {
+public class Item {
 
     private final String displayName;
     private double price;
 
-    Item(String displayName, double price) {
+    public Item(String displayName, double price) {
 
         validateDisplayName(displayName);
         validatePrice(price);
@@ -14,21 +14,14 @@ class Item {
         this.price = price;
     }
 
-    private void validatePrice(double price) {
-
-        if (price < 0)
-            throw new IllegalArgumentException("Price cannot be negative");
-
-    }
-
-    double getPrice() {
-
-        return price;
-    }
-
-    String getDisplayName() {
+    public String getDisplayName() {
 
         return displayName;
+    }
+
+    public double getPrice() {
+
+        return price;
     }
 
     private void validateDisplayName(String displayName) {
@@ -38,5 +31,12 @@ class Item {
 
         if (displayName.equals(""))
             throw new IllegalArgumentException("Display name cannot be empty");
+    }
+
+    private void validatePrice(double price) {
+
+        if (price < 0)
+            throw new IllegalArgumentException("Price cannot be negative");
+
     }
 }

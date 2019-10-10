@@ -1,5 +1,10 @@
 package com.ravendarque;
 
+import com.ravendarque.credit.Credit;
+import com.ravendarque.items.Item;
+import com.ravendarque.vend.InsufficientCreditException;
+import com.ravendarque.vend.NoItemsInVendException;
+import com.ravendarque.vend.Vend;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

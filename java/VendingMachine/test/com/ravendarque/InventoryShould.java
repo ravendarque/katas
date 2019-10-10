@@ -1,5 +1,8 @@
 package com.ravendarque;
 
+import com.ravendarque.inventory.Inventory;
+import com.ravendarque.items.Drink;
+import com.ravendarque.items.Item;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

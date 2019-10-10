@@ -1,6 +1,6 @@
-package com.ravendarque;
+package com.ravendarque.vend;
 
-class NoItemsInVendException extends Exception {
+public class NoItemsInVendException extends Exception {
 
     NoItemsInVendException() {
 

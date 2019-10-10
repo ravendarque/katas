@@ -1,30 +1,28 @@
-package com.ravendarque;
+package com.ravendarque.vend;
+
+import com.ravendarque.credit.Credit;
+import com.ravendarque.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Vend {
+public class Vend {
 
     private List<Item> items = new ArrayList<>();
 
-    boolean validateTransaction(Credit credit) {
-
-        return itemsAreValidForTransaction() && creditIsValidForTransaction(credit);
-    }
-
-    void addItem(Item item) {
+    public void addItem(Item item) {
 
         items.add(item);
     }
 
-    double calculateTotalPrice() {
+    public double calculateTotalPrice() {
 
         return items.stream()
                     .mapToDouble(Item::getPrice)
                     .sum();
     }
 
-    void processTransaction(Credit credit)
+    public void processTransaction(Credit credit)
             throws Exception {
 
         if (!itemsAreValidForTransaction())
@@ -32,6 +30,11 @@ class Vend {
 
         if (!creditIsValidForTransaction(credit))
             throw new InsufficientCreditException();
+    }
+
+    public boolean validateTransaction(Credit credit) {
+
+        return itemsAreValidForTransaction() && creditIsValidForTransaction(credit);
     }
 
     private boolean creditIsValidForTransaction(Credit credit) {

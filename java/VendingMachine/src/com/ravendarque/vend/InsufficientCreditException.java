@@ -1,6 +1,6 @@
-package com.ravendarque;
+package com.ravendarque.vend;
 
-class InsufficientCreditException extends Exception {
+public class InsufficientCreditException extends Exception {
 
     InsufficientCreditException() {
 

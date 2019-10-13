@@ -61,4 +61,17 @@ class CreditShould {
 
         assertThrows(InsufficientCreditException.class, () -> credit.spend(testSpendAmount));
     }
+
+    @Test
+    void returnFalseWhenValidatingVendWithInsufficientCredit() {
+
+        boolean expectedResult = false;
+        int testSpendAmount = 2;
+
+        Credit credit = new Credit();
+
+        boolean actualResult = credit.validateSpend(testSpendAmount);
+
+        assertEquals(expectedResult, actualResult);
+    }
 }

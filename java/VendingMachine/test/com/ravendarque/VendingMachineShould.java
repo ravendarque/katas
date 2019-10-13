@@ -4,21 +4,21 @@ import com.ravendarque.credit.Credit;
 import com.ravendarque.inventory.Inventory;
 import com.ravendarque.items.Item;
 import com.ravendarque.vend.NoItemsInVendException;
-import com.ravendarque.vend.Vend;
+import com.ravendarque.vend.VendingMachine;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VendShould {
+class VendingMachineShould {
 
     @Test
     void calculateTotalPriceOfSelectedItemsAsZeroWithNoItemsSelected() {
 
         double expectedTotalPrice = 0;
 
-        Vend testVend = new Vend(new Inventory());
+        VendingMachine testVend = new VendingMachine(new Inventory());
 
         double actualTotalPrice = testVend.calculateTotalPrice();
 
@@ -33,7 +33,7 @@ class VendShould {
         String dummyItemName = "Test item";
         double testPrice = 1;
 
-        Vend vend = new Vend(new Inventory());
+        VendingMachine vend = new VendingMachine(new Inventory());
         Item testItem1 = new Item(dummyItemName, testPrice);
         vend.addItem(testItem1);
         Item testItem2 = new Item(dummyItemName, testPrice);
@@ -47,7 +47,7 @@ class VendShould {
     @Test
     void throwExceptionWhenProcessingTransactionWithNoSelectedItems() {
 
-        Vend vend = new Vend(new Inventory());
+        VendingMachine vend = new VendingMachine(new Inventory());
 
         Credit credit = new Credit();
 
@@ -64,7 +64,7 @@ class VendShould {
         String dummyItemName = "Test item";
         double testPrice = 1;
 
-        Vend vend = new Vend(new Inventory());
+        VendingMachine vend = new VendingMachine(new Inventory());
         vend.addItem(new Item(dummyItemName, testPrice));
 
         boolean actualResult = vend.validateTransaction(credit);
@@ -79,7 +79,7 @@ class VendShould {
 
         Credit credit = new Credit();
 
-        Vend vend = new Vend(new Inventory());
+        VendingMachine vend = new VendingMachine(new Inventory());
 
         boolean actualResult = vend.validateTransaction(credit);
 
@@ -100,7 +100,7 @@ class VendShould {
         Credit credit = new Credit();
         credit.add(testCreditValue);
 
-        Vend vend = new Vend(new Inventory());
+        VendingMachine vend = new VendingMachine(new Inventory());
         vend.addItem(testItem);
         vend.processTransaction(credit);
 
@@ -123,7 +123,7 @@ class VendShould {
         Credit credit = new Credit();
         credit.add(testCreditValue);
 
-        Vend vend = new Vend(new Inventory());
+        VendingMachine vend = new VendingMachine(new Inventory());
         vend.addItem(testItem);
         vend.processTransaction(credit);
 
@@ -147,7 +147,7 @@ class VendShould {
         double dummyCreditValue = 1;
         credit.add(dummyCreditValue);
 
-        Vend vend = new Vend(testInventory);
+        VendingMachine vend = new VendingMachine(testInventory);
         vend.addItem(testItem);
         vend.processTransaction(credit);
 
@@ -173,7 +173,7 @@ class VendShould {
         double dummyCreditValue = 2;
         credit.add(dummyCreditValue);
 
-        Vend vend = new Vend(testInventory);
+        VendingMachine vend = new VendingMachine(testInventory);
         vend.addItem(testItem1);
         vend.addItem(testItem2);
         vend.processTransaction(credit);

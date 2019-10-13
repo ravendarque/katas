@@ -7,12 +7,12 @@ import com.ravendarque.items.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vend {
+public class VendingMachine {
 
     private List<Item> items = new ArrayList<>();
     private Inventory inventory;
 
-    public Vend(Inventory inventory) {
+    public VendingMachine(Inventory inventory) {
 
         this.inventory = inventory;
     }

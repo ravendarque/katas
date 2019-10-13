@@ -108,4 +108,9 @@ class VendShould {
         assertEquals(expectedRemainingCredit, actualRemainingCredit);
     }
 
+    @Test
+    void leaveCorrectCreditWhenCreditIsGreaterThanTransactionValue() {
+
+    }
+
 }

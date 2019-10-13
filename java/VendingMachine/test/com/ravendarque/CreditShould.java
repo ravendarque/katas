@@ -74,4 +74,37 @@ class CreditShould {
 
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    void leaveZeroCreditAfterSpendEqualToTotalValue()
+            throws InsufficientCreditException {
+
+        double expectedRemainingValue = 0;
+
+        int testCreditValue = 1;
+        Credit credit = new Credit();
+        credit.add(testCreditValue);
+        credit.spend(1);
+
+        double actualRemainingValue = credit.getValue();
+
+        assertEquals(expectedRemainingValue, actualRemainingValue);
+    }
+
+    @Test
+    void leaveCorrectCreditAfterSpendLessThanTotalValue()
+            throws InsufficientCreditException {
+
+        double expectedRemainingValue = 1.5;
+        int testCreditValue = 3;
+        double testSpendAmount = 1.5;
+
+        Credit credit = new Credit();
+        credit.add(testCreditValue);
+        credit.spend(testSpendAmount);
+
+        double actualRemainingValue = credit.getValue();
+
+        assertEquals(expectedRemainingValue, actualRemainingValue);
+    }
 }

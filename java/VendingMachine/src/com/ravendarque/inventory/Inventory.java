@@ -22,6 +22,12 @@ public class Inventory {
                     .collect(Collectors.toList());
     }
 
+    public void removeItems(List<Item> items) {
+
+        this.items.removeAll(items);
+
+    }
+
     public void removeItem(Item item) {
 
         items.remove(item);

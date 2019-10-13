@@ -1,14 +1,15 @@
 package com.ravendarque;
 
 import com.ravendarque.credit.Credit;
+import com.ravendarque.inventory.Inventory;
 import com.ravendarque.items.Item;
-import com.ravendarque.credit.InsufficientCreditException;
 import com.ravendarque.vend.NoItemsInVendException;
 import com.ravendarque.vend.Vend;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class VendShould {
 
@@ -17,7 +18,7 @@ class VendShould {
 
         double expectedTotalPrice = 0;
 
-        Vend testVend = new Vend();
+        Vend testVend = new Vend(new Inventory());
 
         double actualTotalPrice = testVend.calculateTotalPrice();
 
@@ -32,7 +33,7 @@ class VendShould {
         String dummyItemName = "Test item";
         double testPrice = 1;
 
-        Vend vend = new Vend();
+        Vend vend = new Vend(new Inventory());
         Item testItem1 = new Item(dummyItemName, testPrice);
         vend.addItem(testItem1);
         Item testItem2 = new Item(dummyItemName, testPrice);
@@ -46,7 +47,7 @@ class VendShould {
     @Test
     void throwExceptionWhenProcessingTransactionWithNoSelectedItems() {
 
-        Vend vend = new Vend();
+        Vend vend = new Vend(new Inventory());
 
         Credit credit = new Credit();
 
@@ -63,7 +64,7 @@ class VendShould {
         String dummyItemName = "Test item";
         double testPrice = 1;
 
-        Vend vend = new Vend();
+        Vend vend = new Vend(new Inventory());
         vend.addItem(new Item(dummyItemName, testPrice));
 
         boolean actualResult = vend.validateTransaction(credit);
@@ -78,7 +79,7 @@ class VendShould {
 
         Credit credit = new Credit();
 
-        Vend vend = new Vend();
+        Vend vend = new Vend(new Inventory());
 
         boolean actualResult = vend.validateTransaction(credit);
 
@@ -99,7 +100,7 @@ class VendShould {
         Credit credit = new Credit();
         credit.add(testCreditValue);
 
-        Vend vend = new Vend();
+        Vend vend = new Vend(new Inventory());
         vend.addItem(testItem);
         vend.processTransaction(credit);
 
@@ -122,13 +123,64 @@ class VendShould {
         Credit credit = new Credit();
         credit.add(testCreditValue);
 
-        Vend vend = new Vend();
+        Vend vend = new Vend(new Inventory());
         vend.addItem(testItem);
         vend.processTransaction(credit);
 
         double actualRemainingCredit = credit.getValue();
 
         assertEquals(expectedRemainingCredit, actualRemainingCredit);
+    }
+
+    @Test
+    void removeItemFromInventoryAfterSuccessfulTransaction()
+            throws Exception {
+
+        String dummyDisplayName = "Test item";
+        double dummyPrice = 1;
+        Item testItem = new Item(dummyDisplayName, dummyPrice);
+
+        Inventory testInventory = new Inventory();
+        testInventory.addItem(testItem);
+
+        Credit credit = new Credit();
+        double dummyCreditValue = 1;
+        credit.add(dummyCreditValue);
+
+        Vend vend = new Vend(testInventory);
+        vend.addItem(testItem);
+        vend.processTransaction(credit);
+
+        List<Item> actualInventoryList = testInventory.getItems();
+
+        assertTrue(actualInventoryList.isEmpty());
+    }
+
+    @Test
+    void removeItemsFromInventoryAfterSuccessfulTransaction()
+            throws Exception {
+
+        String dummyDisplayName = "Test item";
+        double dummyPrice = 1;
+        Item testItem1 = new Item(dummyDisplayName, dummyPrice);
+        Item testItem2 = new Item(dummyDisplayName, dummyPrice);
+
+        Inventory testInventory = new Inventory();
+        testInventory.addItem(testItem1);
+        testInventory.addItem(testItem2);
+
+        Credit credit = new Credit();
+        double dummyCreditValue = 2;
+        credit.add(dummyCreditValue);
+
+        Vend vend = new Vend(testInventory);
+        vend.addItem(testItem1);
+        vend.addItem(testItem2);
+        vend.processTransaction(credit);
+
+        List<Item> actualInventoryList = testInventory.getItems();
+
+        assertTrue(actualInventoryList.isEmpty());
     }
 
 }

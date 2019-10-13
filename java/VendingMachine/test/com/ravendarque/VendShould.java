@@ -109,8 +109,26 @@ class VendShould {
     }
 
     @Test
-    void leaveCorrectCreditWhenCreditIsGreaterThanTransactionValue() {
+    void leaveCorrectCreditWhenTransactionValueIsLessThanCreditValue()
+            throws Exception {
 
+        double expectedRemainingCredit = 1.5;
+        double testItemPrice = 1.5;
+        double testCreditValue = 3;
+
+        String dummyDisplayName = "Test item";
+        Item testItem = new Item(dummyDisplayName, testItemPrice);
+
+        Credit credit = new Credit();
+        credit.add(testCreditValue);
+
+        Vend vend = new Vend();
+        vend.addItem(testItem);
+        vend.processTransaction(credit);
+
+        double actualRemainingCredit = credit.getValue();
+
+        assertEquals(expectedRemainingCredit, actualRemainingCredit);
     }
 
 }

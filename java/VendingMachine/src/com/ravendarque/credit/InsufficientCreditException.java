@@ -1,4 +1,4 @@
-package com.ravendarque.vend;
+package com.ravendarque.credit;
 
 public class InsufficientCreditException extends Exception {
 

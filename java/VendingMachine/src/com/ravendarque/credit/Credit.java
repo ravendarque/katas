@@ -13,4 +13,18 @@ public class Credit {
 
         totalValue += value;
     }
+
+    public void spend(double value)
+            throws InsufficientCreditException {
+
+        if (!validateSpend(value))
+            throw new InsufficientCreditException();
+
+        totalValue -= value;
+    }
+
+    public boolean validateSpend(double amount) {
+
+        return totalValue >= amount;
+    }
 }

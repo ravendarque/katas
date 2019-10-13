@@ -2,7 +2,7 @@ package com.ravendarque;
 
 import com.ravendarque.credit.Credit;
 import com.ravendarque.items.Item;
-import com.ravendarque.vend.InsufficientCreditException;
+import com.ravendarque.credit.InsufficientCreditException;
 import com.ravendarque.vend.NoItemsInVendException;
 import com.ravendarque.vend.Vend;
 import org.junit.jupiter.api.Test;
@@ -41,21 +41,6 @@ class VendShould {
         double actualTotalPrice = vend.calculateTotalPrice();
 
         assertEquals(expectedTotalPrice, actualTotalPrice);
-    }
-
-    @Test
-    void throwExceptionWhenProcessingTransactionWithCreditLessThanSelectedItems() {
-
-        Vend vend = new Vend();
-        String dummyItemName = "Test item";
-        double testPrice = 1;
-
-        Item testItem = new Item(dummyItemName, testPrice);
-        vend.addItem(testItem);
-
-        Credit credit = new Credit();
-
-        assertThrows(InsufficientCreditException.class, () -> vend.processTransaction(credit));
     }
 
     @Test
@@ -98,6 +83,29 @@ class VendShould {
         boolean actualResult = vend.validateTransaction(credit);
 
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void leaveZeroCreditWithExactCreditForTransaction()
+            throws Exception {
+
+        double expectedRemainingCredit = 0;
+
+        double testPrice = 1;
+        String dummyDisplayName = "Test item";
+        Item testItem = new Item(dummyDisplayName, testPrice);
+
+        double testCreditValue = 1;
+        Credit credit = new Credit();
+        credit.add(testCreditValue);
+
+        Vend vend = new Vend();
+        vend.addItem(testItem);
+        vend.processTransaction(credit);
+
+        double actualRemainingCredit = credit.getValue();
+
+        assertEquals(expectedRemainingCredit, actualRemainingCredit);
     }
 
 }

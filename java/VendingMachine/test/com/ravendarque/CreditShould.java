@@ -1,9 +1,11 @@
 package com.ravendarque;
 
 import com.ravendarque.credit.Credit;
+import com.ravendarque.credit.InsufficientCreditException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CreditShould {
 
@@ -46,5 +48,17 @@ class CreditShould {
         double actualCreditValue = credit.getValue();
 
         assertEquals(expectedCreditValue, actualCreditValue);
+    }
+
+    @Test
+    void throwInsufficientCreditExceptionIfSpendIsGreaterThanTotalValue() {
+
+        double testSpendAmount = 2;
+        double testCreditValue = 1;
+
+        Credit credit = new Credit();
+        credit.add(testCreditValue);
+
+        assertThrows(InsufficientCreditException.class, () -> credit.spend(testSpendAmount));
     }
 }

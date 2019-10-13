@@ -28,18 +28,12 @@ public class Vend {
         if (!itemsAreValidForTransaction())
             throw new NoItemsInVendException();
 
-        if (!creditIsValidForTransaction(credit))
-            throw new InsufficientCreditException();
+        credit.spend(calculateTotalPrice());
     }
 
     public boolean validateTransaction(Credit credit) {
 
-        return itemsAreValidForTransaction() && creditIsValidForTransaction(credit);
-    }
-
-    private boolean creditIsValidForTransaction(Credit credit) {
-
-        return credit.getValue() >= calculateTotalPrice();
+        return itemsAreValidForTransaction() && credit.validateSpend(calculateTotalPrice());
     }
 
     private boolean itemsAreValidForTransaction() {

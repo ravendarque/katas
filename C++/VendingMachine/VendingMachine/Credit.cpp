@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "credit.h"
+#include "Credit.h"
 #include "InsufficientCreditException.h"
 
 double Credit::GetValue() const

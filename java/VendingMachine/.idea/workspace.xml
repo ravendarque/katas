@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82f11c61-7741-40ad-b313-4d0acf2d12ec" name="Default Changelist" comment="" />
+    <list default="true" id="82f11c61-7741-40ad-b313-4d0acf2d12ec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/InventoryShould.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/ItemShould.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/ItemShould.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachineShould.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachineShould.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Credit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Credit.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Inventory.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Inventory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

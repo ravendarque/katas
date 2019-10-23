@@ -16,6 +16,12 @@ double Item::GetPrice() const
 	return Price;
 }
 
+bool Item::operator==(Item& rhs) const
+{
+	return (GetDisplayName() == rhs.GetDisplayName() &&
+		GetPrice() == rhs.GetPrice());
+}
+
 bool Item::operator==(const Item& rhs) const
 {
 	return (GetDisplayName() == rhs.GetDisplayName() &&

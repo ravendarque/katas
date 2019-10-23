@@ -3,24 +3,24 @@
 
 TEST(ItemShould, ProvideADisplayName)
 {
-	const std::string expected_display_name = "Test Item";
-	const double dummy_price = 0;
-	const Item item(expected_display_name, dummy_price);
+	const std::string expectedDisplayName = "Test Item";
+	const double dummyPrice = 0;
+	const Item item(expectedDisplayName, dummyPrice);
 
-	const auto actual_display_name = item.GetDisplayName();
+	const auto actualDisplayName = item.GetDisplayName();
 
-	EXPECT_EQ(expected_display_name, actual_display_name);
+	EXPECT_EQ(expectedDisplayName, actualDisplayName);
 }
 
 TEST(ItemShould, ProvideAPrice)
 {
-	const double expected_price = 1;
+	const double expectedPrice = 1;
 
-	const std::string dummy_display_name = "Test Item";
-	const double test_price = 1;
-	const Item item(dummy_display_name, test_price);
+	const std::string dummyDisplayName = "Test Item";
+	const double testPrice = 1;
+	const Item item(dummyDisplayName, testPrice);
 
-	const auto actual_price = item.GetPrice();
+	const auto actualPrice = item.GetPrice();
 
-	EXPECT_EQ(expected_price, actual_price);
+	EXPECT_EQ(expectedPrice, actualPrice);
 }

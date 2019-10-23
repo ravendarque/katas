@@ -7,6 +7,7 @@ public:
 	Item(std::string displayName, double price);
 	std::string GetDisplayName() const;
 	double GetPrice() const;
+	bool operator==(Item& rhs) const;
 	bool operator==(const Item& rhs) const;
 private:
 	std::string DisplayName;

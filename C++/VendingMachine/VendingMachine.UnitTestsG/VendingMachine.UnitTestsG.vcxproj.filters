@@ -7,13 +7,13 @@
     <ClCompile Include="CreditShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryShould.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ItemShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VendingMachineShould.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemListShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

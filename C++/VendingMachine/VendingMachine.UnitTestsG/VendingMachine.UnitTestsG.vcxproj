@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CreditShould.cpp" />
-    <ClCompile Include="InventoryShould.cpp" />
+    <ClCompile Include="ItemListShould.cpp" />
     <ClCompile Include="ItemShould.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

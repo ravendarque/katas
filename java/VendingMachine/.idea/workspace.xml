@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82f11c61-7741-40ad-b313-4d0acf2d12ec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/InventoryShould.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/ItemShould.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/ItemShould.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachine.UnitTestsG.vcxproj.filters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachineShould.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine.UnitTestsG/VendingMachineShould.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Credit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Credit.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Inventory.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Inventory.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/Item.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/VendingMachine/VendingMachine/VendingMachine.vcxproj.filters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VendingMachine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VendingMachine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/META-INF/java.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/credit/Credit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/credit/InsufficientCreditException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/inventory/Inventory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/items/Drink.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/items/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/vend/NoItemsInVendException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/vend/VendingMachine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/META-INF/java.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/CreditShould.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/InventoryShould.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/ItemShould.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/VendingMachineShould.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

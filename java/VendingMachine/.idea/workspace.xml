@@ -1,22 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+    <option name="showStatusBarWidget" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="82f11c61-7741-40ad-b313-4d0acf2d12ec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/VendingMachine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VendingMachine.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/META-INF/java.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/credit/Credit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/credit/InsufficientCreditException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/inventory/Inventory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/items/Drink.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/items/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/vend/NoItemsInVendException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/com/ravendarque/vend/VendingMachine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/META-INF/java.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/CreditShould.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/InventoryShould.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/ItemShould.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/com/ravendarque/VendingMachineShould.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/rails/Rail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/rails/RailConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/rails/RailConfigurationSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/rails/RailEmptyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/rails/Rails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/vending/NoVendSelectionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ravendarque/vending/VendingMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/ravendarque/unitTests/RailShould.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/ravendarque/unitTests/RailsShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/credit/Credit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ravendarque/credit/Credit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/credit/InsufficientCreditException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ravendarque/credit/InsufficientCreditException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/inventory/Inventory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/items/Drink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/items/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/vend/NoItemsInVendException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ravendarque/vend/VendingMachine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/ravendarque/CreditShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/ravendarque/unitTests/CreditShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/ravendarque/InventoryShould.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/ravendarque/ItemShould.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/ravendarque/VendingMachineShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/ravendarque/unitTests/VendingMachineShould.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,10 +55,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="244" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,17 +80,30 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.ravendarque.unitTests" />
+      <recent name="com.ravendarque.rails" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Git\ASOS\asos-retail\VendingMachine" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ravendarque.rails" />
+      <recent name="com.ravendarque.rail" />
       <recent name="com.ravendarque" />
     </key>
   </component>
@@ -71,15 +119,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in java (1)">
-    <configuration name="All in java (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VendingMachine" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.All in java">
     <configuration name="All in java" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VendingMachine" />
       <option name="PACKAGE_NAME" value="" />
@@ -88,83 +128,83 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InventoryShould" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RailShould.provideCountOfZeroWithNoItemsInRailInventory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VendingMachine" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ravendarque.credit.*" />
+          <option name="PATTERN" value="com.ravendarque.unitTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ravendarque" />
-      <option name="MAIN_CLASS_NAME" value="com.ravendarque.InventoryShould" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ItemShould" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VendingMachine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ravendarque.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ravendarque" />
-      <option name="MAIN_CLASS_NAME" value="com.ravendarque.ItemShould" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ItemShould.provideADisplayName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VendingMachine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ravendarque.credit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ravendarque" />
-      <option name="MAIN_CLASS_NAME" value="com.ravendarque.ItemShould" />
-      <option name="METHOD_NAME" value="provideADisplayName" />
+      <option name="PACKAGE_NAME" value="com.ravendarque.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ravendarque.unitTests.RailShould" />
+      <option name="METHOD_NAME" value="provideCountOfZeroWithNoItemsInRailInventory" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendingMachineShould.leaveZeroCreditWithExactCreditForTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RailShould.throwRailFullExceptionWhenAddingItemToFullRail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VendingMachine" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ravendarque.*" />
+          <option name="PATTERN" value="com.ravendarque.unitTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ravendarque" />
-      <option name="MAIN_CLASS_NAME" value="com.ravendarque.VendingMachineShould" />
-      <option name="METHOD_NAME" value="leaveZeroCreditWithExactCreditForTransaction" />
+      <option name="PACKAGE_NAME" value="com.ravendarque.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ravendarque.unitTests.RailShould" />
+      <option name="METHOD_NAME" value="throwRailFullExceptionWhenAddingItemToFullRail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RailsShould" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VendingMachine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ravendarque.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ravendarque.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ravendarque.unitTests.RailsShould" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendingMachineShould.returnPriceOfSelectedRail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VendingMachine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ravendarque.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ravendarque.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ravendarque.unitTests.VendingMachineShould" />
+      <option name="METHOD_NAME" value="returnPriceOfSelectedRail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ItemShould" />
-      <item itemvalue="JUnit.ItemShould.provideADisplayName" />
-      <item itemvalue="JUnit.InventoryShould" />
       <item itemvalue="JUnit.All in java" />
-      <item itemvalue="JUnit.VendingMachineShould.leaveZeroCreditWithExactCreditForTransaction" />
-      <item itemvalue="JUnit.All in java (1)" />
+      <item itemvalue="JUnit.RailShould.provideCountOfZeroWithNoItemsInRailInventory" />
+      <item itemvalue="JUnit.RailShould.throwRailFullExceptionWhenAddingItemToFullRail" />
+      <item itemvalue="JUnit.RailsShould" />
+      <item itemvalue="JUnit.VendingMachineShould.returnPriceOfSelectedRail" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in java (1)" />
-        <item itemvalue="JUnit.VendingMachineShould.leaveZeroCreditWithExactCreditForTransaction" />
         <item itemvalue="JUnit.All in java" />
-        <item itemvalue="JUnit.InventoryShould" />
-        <item itemvalue="JUnit.ItemShould.provideADisplayName" />
+        <item itemvalue="JUnit.VendingMachineShould.returnPriceOfSelectedRail" />
+        <item itemvalue="JUnit.RailsShould" />
+        <item itemvalue="JUnit.RailShould.throwRailFullExceptionWhenAddingItemToFullRail" />
+        <item itemvalue="JUnit.RailShould.provideCountOfZeroWithNoItemsInRailInventory" />
       </list>
     </recent_temporary>
   </component>
@@ -196,5 +236,19 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/com/ravendarque/unitTests/VendingMachineShould.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/VendingMachine$All_in_java.ic" NAME="All in java Coverage Results" MODIFIED="1572021770975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

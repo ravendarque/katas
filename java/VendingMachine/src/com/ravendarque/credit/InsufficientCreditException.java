@@ -2,8 +2,8 @@ package com.ravendarque.credit;
 
 public class InsufficientCreditException extends Exception {
 
-    InsufficientCreditException() {
+    public InsufficientCreditException() {
 
-        super("Insufficient credit for transaction");
+        super("Insufficient credit for vend");
     }
 }

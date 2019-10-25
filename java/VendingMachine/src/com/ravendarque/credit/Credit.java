@@ -17,13 +17,13 @@ public class Credit {
     public void spend(double value)
             throws InsufficientCreditException {
 
-        if (!validateSpend(value))
+        if (!canSpend(value))
             throw new InsufficientCreditException();
 
         totalValue -= value;
     }
 
-    public boolean validateSpend(double amount) {
+    public boolean canSpend(double amount) {
 
         return totalValue >= amount;
     }

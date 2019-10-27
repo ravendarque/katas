@@ -1,19 +1,20 @@
-package com.ravendarque.vending;
+package com.ravendarque.vendingMachine.vending;
 
-import com.ravendarque.credit.Credit;
-import com.ravendarque.rails.Rail;
-import com.ravendarque.rails.RailConfiguration;
-import com.ravendarque.rails.Rails;
+import com.ravendarque.vendingMachine.credit.Credit;
+import com.ravendarque.vendingMachine.rails.Rail;
+import com.ravendarque.vendingMachine.rails.Rails;
+
+import java.util.Map;
 
 public class VendingMachine {
 
     private final Rails rails;
     private final Credit credit;
 
-    public VendingMachine(RailConfiguration railConfiguration) {
+    public VendingMachine(Rails rails, Credit credit) {
 
-        this.rails = new Rails(railConfiguration);
-        this.credit = new Credit();
+        this.rails = rails;
+        this.credit = credit;
     }
 
     public void addCredit(double creditValue) {
@@ -24,15 +25,25 @@ public class VendingMachine {
     public boolean canPurchaseSelectedItems() {
 
         return rails.hasSelectedRail()
-                && rails.getSelectedRail()
-                        .canVendItem()
+                && !rails.getSelectedRail()
+                         .isEmpty()
                 && credit.canSpend(getSelectedRailPrice());
 
+    }
+
+    public boolean canSelectRail(String railCode) {
+
+        return rails.canSelectRail(railCode);
     }
 
     public double getCreditValue() {
 
         return credit.getValue();
+    }
+
+    public Map<String, String> getRailsSummary() {
+
+        return rails.getRailsSummary();
     }
 
     public double getSelectedRailPrice() {
@@ -41,6 +52,11 @@ public class VendingMachine {
                ? 0
                : rails.getSelectedRail()
                       .getPrice();
+    }
+
+    public void selectRail(String railCode) {
+
+        rails.selectRail(railCode);
     }
 
     public void vend()
@@ -53,10 +69,5 @@ public class VendingMachine {
         credit.spend(selectedRail.getPrice());
         selectedRail.vendItem();
         rails.clearSelection();
-    }
-
-    public void selectRail(String railCode) {
-
-        rails.selectRail(railCode);
     }
 }

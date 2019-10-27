@@ -1,12 +1,12 @@
-package com.ravendarque.rails;
+package com.ravendarque.vendingMachine.rails;
 
 import java.util.*;
 
-public class RailConfiguration {
+public class RailsConfiguration {
 
     private final List<RailConfigurationSettings> railConfigurationSettingsList = new ArrayList<>();
 
-    public void addRailConfigurationSettings(RailConfigurationSettings settings) {
+    public void add(RailConfigurationSettings settings) {
 
         Objects.requireNonNull(settings, "Cannot add null RailConfigurationSettings");
         railConfigurationSettingsList.add(settings);

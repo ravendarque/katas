@@ -1,10 +1,10 @@
 package com.ravendarque.unitTests;
 
-import com.ravendarque.rails.Rail;
-import com.ravendarque.rails.RailConfiguration;
-import com.ravendarque.rails.RailConfigurationSettings;
-import com.ravendarque.rails.Rails;
+import com.ravendarque.vendingMachine.rails.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+import java.util.Map.Entry;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -27,6 +27,20 @@ class RailsShould {
         assertEquals(expectedLabel, actualSelectedRail.getLabel());
     }
 
+    @Test
+    void returnAllRailCodesAndLabels() {
+
+        final String expectedRailLabel = "Test label";
+
+        Rails testRails = getTestRails();
+        Map<String, String> actualRailsSummary = testRails.getRailsSummary();
+
+        for (Entry<String, String> summaryEntry : actualRailsSummary.entrySet()) {
+            assertEquals(TEST_RAIL_CODE, summaryEntry.getKey());
+            assertEquals(expectedRailLabel, summaryEntry.getValue());
+        }
+    }
+
     private Rails getTestRails() {
 
         final int dummyCapacity = 1;
@@ -34,11 +48,14 @@ class RailsShould {
         final int dummyInitialInventory = 1;
         final String testLabel = "Test label";
 
-        final RailConfigurationSettings testRailConfigurationSettings = new RailConfigurationSettings(
-                TEST_RAIL_CODE, dummyCapacity, testPrice, dummyInitialInventory, testLabel);
-
-        final RailConfiguration railConfiguration = new RailConfiguration();
-        railConfiguration.addRailConfigurationSettings(testRailConfigurationSettings);
+        final RailsConfiguration railConfiguration = new RailsConfigurationBuilder()
+                .add(new RailConfigurationSettings(
+                        TEST_RAIL_CODE,
+                        dummyCapacity,
+                        testPrice,
+                        dummyInitialInventory,
+                        testLabel))
+                .build();
 
         return new Rails(railConfiguration);
     }

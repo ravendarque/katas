@@ -1,10 +1,15 @@
 package com.ravendarque.unitTests;
 
-import com.ravendarque.rails.RailConfiguration;
-import com.ravendarque.rails.RailConfigurationSettings;
-import com.ravendarque.vending.NoVendSelectionException;
-import com.ravendarque.vending.VendingMachine;
+import com.ravendarque.vendingMachine.credit.Credit;
+import com.ravendarque.vendingMachine.rails.Rails;
+import com.ravendarque.vendingMachine.rails.RailsConfiguration;
+import com.ravendarque.vendingMachine.rails.RailsConfigurationBuilder;
+import com.ravendarque.vendingMachine.rails.RailConfigurationSettings;
+import com.ravendarque.vendingMachine.vending.NoVendSelectionException;
+import com.ravendarque.vendingMachine.vending.VendingMachine;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -122,14 +127,50 @@ class VendingMachineShould {
         assertFalse(testVendingMachine.canPurchaseSelectedItems());
     }
 
+    @Test
+    void returnRailsSummary() {
+
+        VendingMachine testVendingMachine = getTestVendingMachine();
+
+        Map<String, String> actualRailsSummary = testVendingMachine.getRailsSummary();
+
+        for (Map.Entry<String, String> summaryEntry : actualRailsSummary.entrySet()) {
+            assertEquals(TEST_RAIL_CODE_T1, summaryEntry.getKey());
+            assertEquals(DUMMY_LABEL, summaryEntry.getValue());
+        }
+    }
+
+    @Test
+    void returnFalseIfRailSelectionDoesNotExist() {
+
+        VendingMachine vendingMachine = getTestVendingMachine();
+
+        assertFalse(vendingMachine.canSelectRail("XX"));
+    }
+
+    @Test
+    void returnTrueIfRailSelectionExists() {
+
+        VendingMachine vendingMachine = getTestVendingMachine();
+
+        assertTrue(vendingMachine.canSelectRail(TEST_RAIL_CODE_T1));
+    }
+
     private VendingMachine getTestVendingMachine() {
 
-        final RailConfiguration testRailConfiguration = new RailConfiguration();
-        final RailConfigurationSettings testRailConfigurationSettings = new RailConfigurationSettings(
-                TEST_RAIL_CODE_T1, DUMMY_CAPACITY_1, DUMMY_PRICE_1, DUMMY_INITIAL_INVENTORY_1, DUMMY_LABEL);
-        testRailConfiguration.addRailConfigurationSettings(testRailConfigurationSettings);
+        final RailsConfiguration testRailConfiguration = new RailsConfigurationBuilder()
+                .add(new RailConfigurationSettings(
+                        TEST_RAIL_CODE_T1,
+                        DUMMY_CAPACITY_1,
+                        DUMMY_PRICE_1,
+                        DUMMY_INITIAL_INVENTORY_1,
+                        DUMMY_LABEL))
+                .build();
 
-        return new VendingMachine(testRailConfiguration);
+        Rails rails = new Rails(testRailConfiguration);
+        Credit credit = new Credit();
+
+        return new VendingMachine(rails, credit);
     }
 
 }

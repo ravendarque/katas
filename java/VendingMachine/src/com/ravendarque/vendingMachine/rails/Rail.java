@@ -1,4 +1,4 @@
-package com.ravendarque.rails;
+package com.ravendarque.vendingMachine.rails;
 
 public class Rail {
 
@@ -14,11 +14,6 @@ public class Rail {
         this.inventory = initialInventory;
         this.railPrice = price;
         this.label = label;
-    }
-
-    public boolean canVendItem() {
-
-        return !isEmpty();
     }
 
     public String getLabel() {
@@ -39,7 +34,7 @@ public class Rail {
     public void vendItem()
             throws RailEmptyException {
 
-        if (!canVendItem())
+        if (isEmpty())
             throw new RailEmptyException();
 
         inventory--;
@@ -48,7 +43,7 @@ public class Rail {
     private void validateInitialInventory(int railCapacity, int initialInventory) {
 
         if (initialInventory > railCapacity)
-            throw new IllegalArgumentException("Initial inventory cannot be greater than rails capacity");
+            throw new IllegalArgumentException("Initial inventory cannot be greater than rail capacity");
     }
 
     private void validatePrice(double price) {

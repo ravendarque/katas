@@ -24,9 +24,6 @@
     <ClInclude Include="credit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InsufficientCreditException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VendingMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -37,6 +34,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ItemList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RailEmptyError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InsufficientCreditError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,9 +56,6 @@
     <ClCompile Include="credit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InsufficientCreditException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VendingMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,6 +66,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ItemList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RailEmptyError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InsufficientCreditError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

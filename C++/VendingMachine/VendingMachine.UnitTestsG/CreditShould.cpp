@@ -1,15 +1,15 @@
 #include "pch.h"
 #include "../VendingMachine/Credit.h"
-#include "../VendingMachine/InsufficientCreditException.h"
+#include "../VendingMachine/InsufficientCreditError.h"
 
-TEST(CreditShould, ProvideZeroValueWithNoCreditAdded)
+TEST(CreditShould, ReturnZeroValueWithNoCreditAdded)
 {
 	Credit credit;
 
 	EXPECT_EQ(credit.GetValue(), 0);
 }
 
-TEST(CreditShould, ProvideValueEqualToSingleCreditAdded)
+TEST(CreditShould, ReturnValueEqualToSingleCreditAdded)
 {
 	Credit credit;
 	const double expectedTotalCredit = 1;
@@ -20,7 +20,7 @@ TEST(CreditShould, ProvideValueEqualToSingleCreditAdded)
 	EXPECT_EQ(credit.GetValue(), expectedTotalCredit);
 }
 
-TEST(CreditShould, ProvideValueEqualToSumOfMultipleCreditsAdded)
+TEST(CreditShould, ReturnValueEqualToSumOfMultipleCreditsAdded)
 {
 	Credit credit;
 	const double expectedTotalCredit = 2;
@@ -32,16 +32,16 @@ TEST(CreditShould, ProvideValueEqualToSumOfMultipleCreditsAdded)
 	EXPECT_EQ(credit.GetValue(), expectedTotalCredit);
 }
 
-TEST(CreditShould, ThrowInsufficientCreditExceptionIfSpendIsGreaterThanTotalValue)
+TEST(CreditShould, ThrowExceptionIfSpendIsGreaterThanTotalValue)
 {
 	Credit credit;
 	
 	const double testSpendAmount = 1;
 
-	EXPECT_THROW(credit.Spend(testSpendAmount), InsufficientCreditException);
+	EXPECT_THROW(credit.Spend(testSpendAmount), InsufficientCreditError);
 }
 
-TEST(CreditShould, ReturnFalseWhenValidatingVendWithInsufficientCredit)
+TEST(CreditShould, ReturnFalseWhenValidatingSpendWithInsufficientCredit)
 {
 	const Credit credit;
 	const double testSpendAmount  =1;
@@ -51,7 +51,7 @@ TEST(CreditShould, ReturnFalseWhenValidatingVendWithInsufficientCredit)
 	EXPECT_FALSE(actualResult);
 }
 
-TEST(CreditShould, LeaveZeroCreditAfterSpendEqualToTotalValue)
+TEST(CreditShould, ReturnZeroValueAfterSpendEqualToTotalValue)
 {
 	Credit credit;
 	const double testCreditAmount = 1;
@@ -65,7 +65,7 @@ TEST(CreditShould, LeaveZeroCreditAfterSpendEqualToTotalValue)
 	EXPECT_EQ(actualRemainingCredit, 0);
 }
 
-TEST(CreditShould, LeaveCorrectCreditAfterSpendLessThanTotalValue)
+TEST(CreditShould, ReturnRemainingValueAfterSpendLessThanTotalValue)
 {
 	const double testCreditValue = 2;
 	const double testSpendAmount = 1;

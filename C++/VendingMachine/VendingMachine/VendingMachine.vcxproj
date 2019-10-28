@@ -157,17 +157,19 @@
   <ItemGroup>
     <ClInclude Include="Credit.h" />
     <ClInclude Include="Framework.h" />
-    <ClInclude Include="InsufficientCreditException.h" />
+    <ClInclude Include="InsufficientCreditError.h" />
     <ClInclude Include="ItemList.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="NoItemsInVendException.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Rail.h" />
+    <ClInclude Include="RailEmptyError.h" />
     <ClInclude Include="VendingMachine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Credit.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="InsufficientCreditException.cpp" />
+    <ClCompile Include="InsufficientCreditError.cpp" />
     <ClCompile Include="ItemList.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="NoItemsInVendException.cpp" />
@@ -177,6 +179,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Rail.cpp" />
+    <ClCompile Include="RailEmptyError.cpp" />
     <ClCompile Include="VendingMachine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

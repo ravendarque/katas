@@ -16,6 +16,9 @@
     <ClCompile Include="ItemListShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RailShould.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">

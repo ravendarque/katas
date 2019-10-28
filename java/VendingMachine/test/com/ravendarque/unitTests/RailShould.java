@@ -1,7 +1,7 @@
 package com.ravendarque.unitTests;
 
-import com.ravendarque.rails.Rail;
-import com.ravendarque.rails.RailEmptyException;
+import com.ravendarque.vendingMachine.rails.Rail;
+import com.ravendarque.vendingMachine.rails.RailEmptyException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,16 +24,6 @@ class RailShould {
         final boolean railIsEmpty = testRail.isEmpty();
 
         assertTrue(railIsEmpty);
-    }
-
-    @Test
-    void returnFalseWhenCheckingIfRailWithNoItemsCanVend() {
-
-        final Rail testRail = new Rail(DUMMY_CAPACITY_1, DUMMY_INVENTORY_0, DUMMY_PRICE_1, DUMMY_LABEL);
-
-        final boolean railIsEmpty = testRail.canVendItem();
-
-        assertFalse(railIsEmpty);
     }
 
     @Test
@@ -89,26 +79,6 @@ class RailShould {
         final Rail rail = new Rail(DUMMY_CAPACITY_1, TEST_INVENTORY_0, DUMMY_PRICE_1, DUMMY_LABEL);
 
         assertThrows(RailEmptyException.class, rail::vendItem);
-    }
-
-    @Test
-    void returnFalseWhenCheckingIfARailWithNoItemsCanVend() {
-
-        final Rail rail = new Rail(DUMMY_CAPACITY_1, TEST_INVENTORY_0, DUMMY_PRICE_1, DUMMY_LABEL);
-
-        final boolean actualResult = rail.canVendItem();
-
-        assertFalse(actualResult);
-    }
-
-    @Test
-    void returnTrueWhenCheckingIfARailWithOneItemCanVend() {
-
-        final Rail rail = new Rail(DUMMY_CAPACITY_1, TEST_INVENTORY_1, DUMMY_PRICE_1, DUMMY_LABEL);
-
-        final boolean actualResult = rail.canVendItem();
-
-        assertTrue(actualResult);
     }
 
     @Test

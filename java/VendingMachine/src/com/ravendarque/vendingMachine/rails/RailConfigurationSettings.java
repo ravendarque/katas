@@ -1,4 +1,4 @@
-package com.ravendarque.rails;
+package com.ravendarque.vendingMachine.rails;
 
 public class RailConfigurationSettings {
 

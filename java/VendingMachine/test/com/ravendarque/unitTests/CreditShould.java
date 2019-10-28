@@ -1,7 +1,7 @@
 package com.ravendarque.unitTests;
 
-import com.ravendarque.credit.Credit;
-import com.ravendarque.credit.InsufficientCreditException;
+import com.ravendarque.vendingMachine.credit.Credit;
+import com.ravendarque.vendingMachine.credit.InsufficientCreditException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

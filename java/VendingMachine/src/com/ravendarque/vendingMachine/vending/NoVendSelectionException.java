@@ -1,4 +1,4 @@
-package com.ravendarque.vending;
+package com.ravendarque.vendingMachine.vending;
 
 public class NoVendSelectionException extends Exception {
 

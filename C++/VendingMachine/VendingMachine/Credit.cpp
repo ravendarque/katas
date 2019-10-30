@@ -20,7 +20,7 @@ void Credit::Spend(const double amount)
 	TotalValue -= amount;
 }
 
-bool Credit::ValidateSpend(const double amount) const
+bool Credit::CanSpend(const double amount) const
 {
 	return amount <= TotalValue;
 }

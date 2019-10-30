@@ -9,7 +9,7 @@ static const std::string DUMMY_LABEL = "Dummy label";
 
 TEST(RailShould, ReturnTrueWhenCheckingIfRailWithNoItemsIsEmpty)
 {
-	const Rail testRail(DUMMY_CAPACITY_1, DUMMY_INITIAL_INVENTORY_0, DUMMY_PRICE_0, DUMMY_LABEL);
+	const Rail testRail(DUMMY_INITIAL_INVENTORY_0, DUMMY_PRICE_0, DUMMY_LABEL);
 
 	EXPECT_TRUE(testRail.IsEmpty());
 }
@@ -18,7 +18,7 @@ TEST(RailShould, ReturnFalseWhenCheckingIfRailWithOneItemIsEmpty)
 {
 	const auto testInitialInventory = 1;
 
-	const Rail testRail(DUMMY_CAPACITY_1, testInitialInventory, DUMMY_PRICE_0, DUMMY_LABEL);
+	const Rail testRail(testInitialInventory, DUMMY_PRICE_0, DUMMY_LABEL);
 
 	EXPECT_FALSE(testRail.IsEmpty());
 }
@@ -29,11 +29,11 @@ TEST(RailShould, ProvideAPrice)
 
 	const auto testPrice = 1;
 
-	const Rail testRail(DUMMY_CAPACITY_1, DUMMY_INITIAL_INVENTORY_0, testPrice, DUMMY_LABEL);
+	const Rail testRail(DUMMY_INITIAL_INVENTORY_0, testPrice, DUMMY_LABEL);
 
 	const auto actualPrice = testRail.GetPrice();
 
-	EXPECT_EQ(expectedPrice, actualPrice);
+	EXPECT_EQ(actualPrice, expectedPrice);
 }
 
 TEST(RailShould, ProvideALabel)
@@ -42,18 +42,18 @@ TEST(RailShould, ProvideALabel)
 
 	const std::string testLabel = "Test label";
 
-	const Rail testRail(DUMMY_CAPACITY_1, DUMMY_INITIAL_INVENTORY_0, DUMMY_PRICE_0, testLabel);
+	const Rail testRail(DUMMY_INITIAL_INVENTORY_0, DUMMY_PRICE_0, testLabel);
 
 	const auto actualLabel = testRail.GetLabel();
 
-	EXPECT_EQ(expectedLabel, actualLabel);
+	EXPECT_EQ(actualLabel, expectedLabel);
 }
 
 TEST(RailShould, ReturnTrueWhenCheckingIfRailIsEmptyAfterLastItemHasBeenVended)
 {
 	const auto testInitialInventory = 1;
 
-	Rail testRail(DUMMY_CAPACITY_1, testInitialInventory, DUMMY_PRICE_0, DUMMY_LABEL);
+	Rail testRail(testInitialInventory, DUMMY_PRICE_0, DUMMY_LABEL);
 	testRail.Vend();
 
 	EXPECT_TRUE(testRail.IsEmpty());
@@ -61,18 +61,9 @@ TEST(RailShould, ReturnTrueWhenCheckingIfRailIsEmptyAfterLastItemHasBeenVended)
 
 TEST(RailShould, ThrowErrorOnVendWhenRailIsEmpty)
 {
-	Rail testRail(DUMMY_CAPACITY_1, DUMMY_INITIAL_INVENTORY_0, DUMMY_PRICE_0, DUMMY_LABEL);
+	Rail testRail(DUMMY_INITIAL_INVENTORY_0, DUMMY_PRICE_0, DUMMY_LABEL);
 
 	EXPECT_THROW(testRail.Vend(), RailEmptyError);
-}
-
-TEST(RailShould, ThrowErrorWhenInitialInventoryIsGreaterThanRailCapacity)
-{
-	const auto testInitialInventory = 2;
-	
-	EXPECT_THROW(
-		Rail testRail(DUMMY_CAPACITY_1, testInitialInventory, DUMMY_PRICE_0, DUMMY_LABEL);,
-		std::invalid_argument);
 }
 
 TEST(RailShould, ThrowErrorWhenPriceIsNegative)
@@ -80,6 +71,6 @@ TEST(RailShould, ThrowErrorWhenPriceIsNegative)
 	const auto testPrice = -1;
 
 	EXPECT_THROW(
-		Rail testRail(DUMMY_CAPACITY_1, DUMMY_INITIAL_INVENTORY_0, testPrice, DUMMY_LABEL);,
+		Rail testRail(DUMMY_INITIAL_INVENTORY_0, testPrice, DUMMY_LABEL);,
 		std::invalid_argument);
 }

@@ -11,71 +11,80 @@ TEST(CreditShould, ReturnZeroValueWithNoCreditAdded)
 
 TEST(CreditShould, ReturnValueEqualToSingleCreditAdded)
 {
-	Credit credit;
-	const double expectedTotalCredit = 1;
+	const double expectedCreditValue = 1;
+
 	const double testCreditValue = 1;
 
+	Credit credit;
 	credit.Add(testCreditValue);
 
-	EXPECT_EQ(credit.GetValue(), expectedTotalCredit);
+	const auto actualCreditValue = credit.GetValue();
+	
+	EXPECT_EQ(actualCreditValue, expectedCreditValue);
 }
 
 TEST(CreditShould, ReturnValueEqualToSumOfMultipleCreditsAdded)
 {
-	Credit credit;
-	const double expectedTotalCredit = 2;
+	const double expectedCreditValue = 2;
+
 	const double testCreditValue = 1;
 
+	Credit credit;
 	credit.Add(testCreditValue);
 	credit.Add(testCreditValue);
 
-	EXPECT_EQ(credit.GetValue(), expectedTotalCredit);
+	const auto actualCreditValue = credit.GetValue();
+	
+	EXPECT_EQ(actualCreditValue, expectedCreditValue);
 }
 
 TEST(CreditShould, ThrowExceptionIfSpendIsGreaterThanTotalValue)
 {
-	Credit credit;
-	
 	const double testSpendAmount = 1;
+
+	Credit credit;
 
 	EXPECT_THROW(credit.Spend(testSpendAmount), InsufficientCreditError);
 }
 
 TEST(CreditShould, ReturnFalseWhenValidatingSpendWithInsufficientCredit)
 {
-	const Credit credit;
-	const double testSpendAmount  =1;
+	const double testSpendAmount = 1;
 
-	const auto actualResult = credit.ValidateSpend(testSpendAmount);
+	const Credit credit;
+	const auto actualResult = credit.CanSpend(testSpendAmount);
 
 	EXPECT_FALSE(actualResult);
 }
 
 TEST(CreditShould, ReturnZeroValueAfterSpendEqualToTotalValue)
 {
+	const double expectedRemainingValue = 0;
+
+	const double testCreditValue = 1;
+	const double testSpendValue = 1;
+
 	Credit credit;
-	const double testCreditAmount = 1;
-	const double testSpendAmount = 1;
+	credit.Add(testCreditValue);
+	credit.Spend(testSpendValue);
 
-	credit.Add(testCreditAmount);
-	credit.Spend(testSpendAmount);
+	auto actualRemainingValue = credit.GetValue();
 
-	auto actualRemainingCredit = credit.GetValue();
-
-	EXPECT_EQ(actualRemainingCredit, 0);
+	EXPECT_EQ(actualRemainingValue, expectedRemainingValue);
 }
 
 TEST(CreditShould, ReturnRemainingValueAfterSpendLessThanTotalValue)
 {
+	const double expectedRemainingValue = 1;
+
 	const double testCreditValue = 2;
-	const double testSpendAmount = 1;
-	const double expectedRemainingCredit = 1;
+	const double testSpendValue = 1;
 
 	Credit credit;
 	credit.Add(testCreditValue);
-	credit.Spend(testSpendAmount);
+	credit.Spend(testSpendValue);
 
-	auto actualRemainingCredit = credit.GetValue();
+	auto actualRemainingValue = credit.GetValue();
 
-	EXPECT_EQ(actualRemainingCredit, expectedRemainingCredit);
+	EXPECT_EQ(actualRemainingValue, expectedRemainingValue);
 }

@@ -3,10 +3,9 @@
 #include <utility>
 #include "RailEmptyError.h"
 
-Rail::Rail(const unsigned int capacity, const unsigned int initialInventory, const double price, std::string label):
-	Capacity(capacity), Inventory(initialInventory), Price(price), Label(std::move(label))
+Rail::Rail(const unsigned int initialInventory, const double price, std::string label):
+	Inventory(initialInventory), Price(price), Label(std::move(label))
 {
-	ValidateInitialInventory(capacity, initialInventory);
 	ValidatePrice(price);
 }
 
@@ -33,10 +32,9 @@ void Rail::Vend()
 	Inventory--;
 }
 
-void Rail::ValidateInitialInventory(const unsigned int capacity, const unsigned int initialInventory)
+bool Rail::CanVend() const
 {
-	if (initialInventory > capacity)
-		throw std::invalid_argument("Initial inventory cannot be greater than rail capacity");
+	return Inventory > 0;
 }
 
 void Rail::ValidatePrice(const double price)

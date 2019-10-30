@@ -1,18 +1,17 @@
 #pragma once
-#include <xstring>
+#include <string>
 
 class Rail
 {
 public:
+	Rail(unsigned int initialInventory, double price, std::string label);
 	bool IsEmpty() const;
 	double GetPrice() const;
 	std::string GetLabel() const;
 	void Vend();
-	static void ValidateInitialInventory(unsigned int capacity, unsigned int initialInventory);
-	static void ValidatePrice(double price);
-	Rail(unsigned int capacity, unsigned int initialInventory, double price, std::string label);
+	bool CanVend() const;
 private:
-	const unsigned int Capacity;
+	static void ValidatePrice(double price);
 	unsigned int Inventory;
 	const double Price;
 	const std::string Label;

@@ -7,16 +7,19 @@
     <ClCompile Include="CreditShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemShould.cpp">
+    <ClCompile Include="RailShould.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RailsShould.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RailsConfigurationShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VendingMachineShould.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemListShould.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RailShould.cpp">
+    <ClCompile Include="VendingMachineShould_F.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,6 +33,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VendingMachineShould_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

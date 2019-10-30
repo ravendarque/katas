@@ -1,21 +1,20 @@
 #pragma once
-#include "Item.h"
-#include <vector>
 #include "Credit.h"
-#include "ItemList.h"
+#include "Rails.h"
 
 class VendingMachine
 {
 public:
-	explicit VendingMachine(ItemList& inventory, ItemList& selection);
-	double CalculateTotalPrice() const;
-	void SelectItem(const Item& item);
-	void ProcessTransaction(Credit& credit);
-	bool ValidateTransaction(const Credit credit) const;
-	std::vector<Item> GetSelectedItems() const;
-	std::vector<Item> GetInventoryItems() const;
+	VendingMachine(Rails& rails, const Credit& credit);
+	double GetSelectedRailPrice();
+	void SelectRail(const std::string& railCode);
+	void Vend();
+	bool CanVend();
+	void AddCredit(const double amount);
+	double GetCreditValue() const;
+	bool CanSelectRail(const std::string& railCode) const;
+	std::map<std::string, std::string> GetRailsSummary() const;
 private:
-	double TotalPrice = 0;
-	ItemList Inventory;
-	ItemList Selection;
+	Rails VendingMachineRails;
+	Credit VendingMachineCredit;
 };

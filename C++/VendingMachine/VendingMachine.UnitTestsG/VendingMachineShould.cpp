@@ -2,173 +2,169 @@
 #include "../VendingMachine/Item.h"
 #include "../VendingMachine/VendingMachine.h"
 #include "../VendingMachine/Credit.h"
-#include "../VendingMachine/NoItemsInVendException.h"
+#include "../VendingMachine/NoVendSelectionError.h"
+#include "../VendingMachine/Rails.h"
+#include "VendingMachineShould_F.h"
 
-TEST(VendingMachineShould, CalculateTotalPriceOfSelectedItemsAsZeroWithNoItemsSelected)
+TEST_F(VendingMachineShould_F, ReturnZeroPriceWhenNoRailIsSelected)
 {
-	const double expectedTotalPrice = 0;
-	ItemList testInventory;
-	ItemList testSelection;
+	const double expectedPrice = 0;
 
-	const VendingMachine testVendingMachine(testInventory, testSelection);
+	auto testVendingMachine = BuildTestVendingMachine();
 
-	const auto actualTotalPrice = testVendingMachine.CalculateTotalPrice();
+	const auto actualPrice = testVendingMachine.GetSelectedRailPrice();
 
-	EXPECT_EQ(actualTotalPrice, expectedTotalPrice);
+	EXPECT_EQ(actualPrice, expectedPrice);
 }
 
-TEST(VendingMachineShould, CalculateTotalPriceOfSelectedItemsWithTwoItemsSelected)
+TEST_F(VendingMachineShould_F, ReturnPriceOfSelectedRail)
 {
-	const double expectedTotalPrice = 2;
+	const double expectedPrice = 1;
 
-	const std::string dummyDisplayName = "Test item";
-	const double testPrice = 1;
-	const Item testItem1(dummyDisplayName, testPrice);
-	const Item testItem2(dummyDisplayName, testPrice);
+	const std::string testRailCode = "T1";
 
-	ItemList testInventory;
-	testInventory.AddItem(testItem1);
-	testInventory.AddItem(testItem2);
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_IN_STOCK_RAIL_CODE);
 
-	ItemList testSelection;
+	const auto actualPrice = testVendingMachine.GetSelectedRailPrice();
 
-	VendingMachine testVendingMachine(testInventory, testSelection);
-	testVendingMachine.SelectItem(testItem1);
-	testVendingMachine.SelectItem(testItem2);
-
-	const auto actualTotalPrice = testVendingMachine.CalculateTotalPrice();
-
-	EXPECT_EQ(actualTotalPrice, expectedTotalPrice);
+	EXPECT_EQ(actualPrice, expectedPrice);
 }
 
-TEST(VendingMachineShould, ThrowExceptionWhenProcessingTransactionWithNoSelectedItems)
+TEST_F(VendingMachineShould_F, ThrowExceptionOnVendWhenNoRailIsSelected)
 {
-	Credit dummyCredit;
-	ItemList testInventory;
-	ItemList testSelection;
+	auto testVendingMachine = BuildTestVendingMachine();
 
-	VendingMachine testVendingMachine(testInventory, testSelection);
-
-	EXPECT_THROW(testVendingMachine.ProcessTransaction(dummyCredit), NoItemsInVendException);
+	EXPECT_THROW(testVendingMachine.Vend(), NoVendSelectionError);
 }
 
-TEST(VendingMachineShould, ReturnFalseWhenValidatingVendWithNoSelectedItems)
+TEST_F(VendingMachineShould_F, ReturnFalseWhenCheckingIfCanVendWithNoRailSelected)
 {
-	const Credit dummyCredit;
-	ItemList testInventory;
-	ItemList testSelection;
+	auto testVendingMachine = BuildTestVendingMachine();
 
-	const VendingMachine testVendingMachine(testInventory, testSelection);
-
-	const auto actualResult = testVendingMachine.ValidateTransaction(dummyCredit);
+	const auto actualResult = testVendingMachine.CanVend();
 
 	EXPECT_FALSE(actualResult);
 }
 
-TEST(VendingMachineShould, LeaveZeroCreditWithExactCreditForTransaction)
+TEST_F(VendingMachineShould_F, ReturnFalseWhenCheckingIfCanVendWithEmptySelectedRail)
+{
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_OUT_OF_STOCK_RAIL_CODE);
+
+	const auto actualResult = testVendingMachine.CanVend();
+
+	EXPECT_FALSE(actualResult);
+}
+
+TEST_F(VendingMachineShould_F, ReturnFalseWhenCheckingIfCanVendWithInsufficientCreditForSelectedRail)
+{
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_IN_STOCK_EXPENSIVE_RAIL_CODE);
+
+	const auto actualResult = testVendingMachine.CanVend();
+
+	EXPECT_FALSE(actualResult);
+}
+
+TEST_F(VendingMachineShould_F, LeaveZeroCreditValueWithExactCreditForVend)
 {
 	const double expectedRemainingCredit = 0;
 
-	const std::string dummyDisplayName = "Test item";
-	const double testPrice = 1;
-	const Item testItem(dummyDisplayName, testPrice);
-
-	ItemList testInventory;
-	testInventory.AddItem(testItem);
-
-	ItemList testSelection;
-
-	VendingMachine testVendingMachine(testInventory, testSelection);
-	testVendingMachine.SelectItem(testItem);
-
-	Credit testCredit;
 	const double testCreditAmount = 1;
-	testCredit.Add(testCreditAmount);
 
-	testVendingMachine.ProcessTransaction(testCredit);
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_IN_STOCK_RAIL_CODE);
 
-	const auto actualRemainingCredit = testCredit.GetValue();
+	testVendingMachine.AddCredit(testCreditAmount);
+
+	testVendingMachine.Vend();
+
+	const auto actualRemainingCredit = testVendingMachine.GetCreditValue();
 
 	EXPECT_EQ(actualRemainingCredit, expectedRemainingCredit);
 }
 
-TEST(VendingMachineShould, LeaveCorrectCreditWhenTransactionValueIsLessThanCreditValue)
+TEST_F(VendingMachineShould_F, LeaveCorrectCreditWhenVendPriceIsLessThanCreditValue)
 {
-	const double expectedRemainingCredit = 1.5;
+	const auto expectedRemainingCredit = 1;
 
-	const std::string dummyDisplayName = "Test item";
-	const double testPrice = 1.5;
-	const Item testItem(dummyDisplayName, testPrice);
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_IN_STOCK_RAIL_CODE);
 
-	ItemList testInventory;
-	testInventory.AddItem(testItem);
+	const double testCreditAmount = 2;
+	testVendingMachine.AddCredit(testCreditAmount);
 
-	ItemList testSelection;
+	testVendingMachine.Vend();
 
-	VendingMachine testVendingMachine(testInventory, testSelection);
-	testVendingMachine.SelectItem(testItem);
-
-	Credit testCredit;
-	const double testCreditAmount = 3;
-	testCredit.Add(testCreditAmount);
-
-	testVendingMachine.ProcessTransaction(testCredit);
-
-	const auto actualRemainingCredit = testCredit.GetValue();
+	const auto actualRemainingCredit = testVendingMachine.GetCreditValue();
 
 	EXPECT_EQ(actualRemainingCredit, expectedRemainingCredit);
 }
 
-TEST(VendingMachineShould, RemoveItemsFromVendAfterSuccessfulTransaction)
+TEST_F(VendingMachineShould_F, ClearRailSelectionAfterSuccessfulVend)
+{
+	const double expectedPriceWhenNoRailSelected = 0;
+
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_IN_STOCK_RAIL_CODE);
+
+	const double testCreditAmount = 1;
+	testVendingMachine.AddCredit(testCreditAmount);
+
+	testVendingMachine.Vend();
+
+	const auto actualRailPrice = testVendingMachine.GetSelectedRailPrice();
+
+	EXPECT_EQ(actualRailPrice, expectedPriceWhenNoRailSelected);
+}
+
+TEST_F(VendingMachineShould_F, DecrementRailInventoryAfterSuccessfulVend)
 {
 	const double expectedRemainingVendItemsSize = 0;
 
-	const std::string dummyDisplayName = "Test item";
-	const double testPrice = 1;
-	const Item testItem(dummyDisplayName, testPrice);
+	auto testVendingMachine = BuildTestVendingMachine();
+	testVendingMachine.SelectRail(TEST_IN_STOCK_RAIL_CODE);
 
-	ItemList testInventory;
-	testInventory.AddItem(testItem);
+	const double testCreditAmount = 2;
+	testVendingMachine.AddCredit(testCreditAmount);
 
-	ItemList testSelection;
+	testVendingMachine.Vend();
 
-	VendingMachine testVendingMachine(testInventory, testSelection);
-	testVendingMachine.SelectItem(testItem);
+	testVendingMachine.SelectRail(TEST_IN_STOCK_RAIL_CODE);
 
-	Credit testCredit;
-	const double testCreditAmount = 1;
-	testCredit.Add(testCreditAmount);
+	const auto actualResultAfterLastItemVended = testVendingMachine.CanVend();
 
-	testVendingMachine.ProcessTransaction(testCredit);
-
-	const auto actualRemainingVendItemsSize = testVendingMachine.GetSelectedItems().size();
-
-	EXPECT_EQ(actualRemainingVendItemsSize, expectedRemainingVendItemsSize);
+	EXPECT_FALSE(actualResultAfterLastItemVended);
 }
 
-TEST(VendingMachineShould, RemoveItemsFromInventoryAfterSuccessfulTransaction)
+TEST_F(VendingMachineShould_F, ReturnFalseIfRailSelectionDoesNotExist)
 {
-	const double expectedRemainingInventorySize = 0;
+	const std::string testNonExistentRailCode = "XX";
 
-	const std::string dummyDisplayName = "Test item";
-	const double testPrice = 1;
-	const Item testItem(dummyDisplayName, testPrice);
+	const auto testVendingMachine = BuildTestVendingMachine();
 
-	ItemList testInventory;
-	testInventory.AddItem(testItem);
+	const auto actualResult = testVendingMachine.CanSelectRail(testNonExistentRailCode);
 
-	ItemList testSelection;
+	EXPECT_FALSE(actualResult);
+}
 
-	VendingMachine testVendingMachine(testInventory, testSelection);
-	testVendingMachine.SelectItem(testItem);
+TEST_F(VendingMachineShould_F, ReturnTrueIfRailSelectionExists)
+{
+	const auto testVendingMachine = BuildTestVendingMachine();
 
-	Credit testCredit;
-	const double testCreditAmount = 1;
-	testCredit.Add(testCreditAmount);
+	const auto actualResult = testVendingMachine.CanSelectRail(TEST_IN_STOCK_RAIL_CODE);
 
-	testVendingMachine.ProcessTransaction(testCredit);
+	EXPECT_TRUE(actualResult);
+}
 
-	const auto actualRemainingInventorySize = testVendingMachine.GetInventoryItems().size();
-
-	EXPECT_EQ(actualRemainingInventorySize, expectedRemainingInventorySize);
+TEST_F(VendingMachineShould_F, ReturnRailsSummary)
+{
+	const auto testVendingMachine = BuildTestVendingMachine();
+	
+	auto actualRailsSummary = testVendingMachine.GetRailsSummary();
+	
+	EXPECT_EQ(actualRailsSummary.find(TEST_IN_STOCK_RAIL_CODE)->second, TEST_IN_STOCK_LABEL);
+	EXPECT_EQ(actualRailsSummary.find(TEST_IN_STOCK_EXPENSIVE_RAIL_CODE)->second, TEST_IN_STOCK_EXPENSIVE_LABEL);
+	EXPECT_EQ(actualRailsSummary.find(TEST_OUT_OF_STOCK_RAIL_CODE)->second, TEST_OUT_OF_STOCK_LABEL);
 }

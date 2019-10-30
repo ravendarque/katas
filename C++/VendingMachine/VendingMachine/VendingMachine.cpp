@@ -1,49 +1,64 @@
 #include "pch.h"
 #include "VendingMachine.h"
-#include "NoItemsInVendException.h"
+#include "NoVendSelectionError.h"
 #include <algorithm>
+#include <utility>
 
-VendingMachine::VendingMachine(ItemList& inventory, ItemList& selection)
-	: Inventory(inventory), Selection(selection)
+VendingMachine::VendingMachine(Rails& rails, const Credit& credit)
+	: VendingMachineRails(std::move(rails)), VendingMachineCredit(credit)
 {
 }
 
-double VendingMachine::CalculateTotalPrice() const
+double VendingMachine::GetSelectedRailPrice()
 {
-	return TotalPrice;
+	return VendingMachineRails.HasSelectedRail()
+		       ? VendingMachineRails.GetSelectedRail()->GetPrice()
+		       : 0;
 }
 
-void VendingMachine::SelectItem(const Item& item)
+void VendingMachine::SelectRail(const std::string& railCode)
 {
-	TotalPrice += item.GetPrice();
-	Selection.AddItem(item);
+	if (VendingMachineRails.CanSelectRail(railCode))
+		VendingMachineRails.SelectRail(railCode);
 }
 
-void VendingMachine::ProcessTransaction(Credit& credit)
+void VendingMachine::Vend()
 {
-	if (Selection.IsEmpty())
-		throw NoItemsInVendException();
+	if (!VendingMachineRails.HasSelectedRail())
+		throw NoVendSelectionError();
 
-	credit.Spend(TotalPrice);
-	TotalPrice = 0;
-	for (auto& item : Selection.GetItems())
-	{
-		Inventory.RemoveItem(item);
-		Selection.RemoveItem(item);
-	}
+	auto selectedRail = VendingMachineRails.GetSelectedRail();
+	VendingMachineCredit.Spend(selectedRail->GetPrice());
+	selectedRail->Vend();
+	VendingMachineRails.ClearRailSelection();
 }
 
-bool VendingMachine::ValidateTransaction(const Credit credit) const
+bool VendingMachine::CanVend()
 {
-	return credit.ValidateSpend(TotalPrice) && !Selection.IsEmpty();
+	if (!VendingMachineRails.HasSelectedRail())
+		return false;
+	
+	const auto selectedRail = VendingMachineRails.GetSelectedRail();
+	return selectedRail->CanVend()
+		&& VendingMachineCredit.CanSpend(selectedRail->GetPrice());
 }
 
-std::vector<Item> VendingMachine::GetSelectedItems() const
+void VendingMachine::AddCredit(const double amount)
 {
-	return Selection.GetItems();
+	VendingMachineCredit.Add(amount);
 }
 
-std::vector<Item> VendingMachine::GetInventoryItems() const
+double VendingMachine::GetCreditValue() const
 {
-	return Inventory.GetItems();
+	return VendingMachineCredit.GetValue();
+}
+
+bool VendingMachine::CanSelectRail(const std::string& railCode) const
+{
+	return VendingMachineRails.CanSelectRail(railCode);
+}
+
+std::map<std::string, std::string> VendingMachine::GetRailsSummary() const
+{
+	return VendingMachineRails.GetRailsSummary();
 }

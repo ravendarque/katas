@@ -19,7 +19,6 @@ public class Rails {
         for (RailConfigurationSettings settings : railConfiguration.getConfigurations()) {
 
             final Rail rail = new Rail(
-                    settings.getCapacity(),
                     settings.getInitialInventory(),
                     settings.getPrice(),
                     settings.getLabel());

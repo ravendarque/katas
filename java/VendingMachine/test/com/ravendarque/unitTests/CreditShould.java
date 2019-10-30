@@ -63,7 +63,7 @@ class CreditShould {
     }
 
     @Test
-    void returnFalseWhenValidatingVendWithInsufficientCredit() {
+    void returnFalseWhenValidatingSpendWithInsufficientCredit() {
 
         final boolean expectedResult = false;
         final int testSpendAmount = 2;

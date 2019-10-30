@@ -2,7 +2,7 @@ package com.ravendarque.vendingMachine.rails;
 
 public class RailsConfigurationBuilder {
 
-    private RailsConfiguration railConfiguration = new RailsConfiguration();
+    private final RailsConfiguration railConfiguration = new RailsConfiguration();
 
     public RailsConfigurationBuilder add(RailConfigurationSettings railConfigurationSettings) {
 

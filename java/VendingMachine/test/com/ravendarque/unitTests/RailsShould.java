@@ -4,18 +4,30 @@ import com.ravendarque.vendingMachine.rails.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
-import java.util.Map.Entry;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RailsShould {
 
     private static final String TEST_RAIL_CODE = "T1";
 
     @Test
+    void returnFalseWhenCheckingIfNonexistentRailCanBeSelected() {
+
+        final String testNonExistentRailCode = "XX";
+
+        assertFalse(getTestRails().canSelectRail(testNonExistentRailCode));
+    }
+
+    @Test
+    void returnTrueWhenCheckingIfExistentRailCanBeSelected() {
+
+        assertTrue(getTestRails().canSelectRail(TEST_RAIL_CODE));
+    }
+
+    @Test
     void selectRailByRailCode() {
 
-        final int expectedPrice = 1;
         final String expectedLabel = "Test label";
 
         final Rails testRails = getTestRails();
@@ -23,27 +35,22 @@ class RailsShould {
 
         final Rail actualSelectedRail = testRails.getSelectedRail();
 
-        assertEquals(expectedPrice, actualSelectedRail.getPrice());
         assertEquals(expectedLabel, actualSelectedRail.getLabel());
     }
 
     @Test
-    void returnAllRailCodesAndLabels() {
+    void returnRailsSummary() {
 
         final String expectedRailLabel = "Test label";
 
         Rails testRails = getTestRails();
         Map<String, String> actualRailsSummary = testRails.getRailsSummary();
 
-        for (Entry<String, String> summaryEntry : actualRailsSummary.entrySet()) {
-            assertEquals(TEST_RAIL_CODE, summaryEntry.getKey());
-            assertEquals(expectedRailLabel, summaryEntry.getValue());
-        }
+        assertEquals(actualRailsSummary.get(TEST_RAIL_CODE), expectedRailLabel);
     }
 
     private Rails getTestRails() {
 
-        final int dummyCapacity = 1;
         final int testPrice = 1;
         final int dummyInitialInventory = 1;
         final String testLabel = "Test label";
@@ -51,7 +58,6 @@ class RailsShould {
         final RailsConfiguration railConfiguration = new RailsConfigurationBuilder()
                 .add(new RailConfigurationSettings(
                         TEST_RAIL_CODE,
-                        dummyCapacity,
                         testPrice,
                         dummyInitialInventory,
                         testLabel))

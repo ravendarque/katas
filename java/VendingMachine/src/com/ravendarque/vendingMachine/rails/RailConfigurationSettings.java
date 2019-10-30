@@ -3,17 +3,15 @@ package com.ravendarque.vendingMachine.rails;
 public class RailConfigurationSettings {
 
     private final String railCode;
-    private final int railCapacity;
-    private final double railPrice;
+    private final double price;
     private final int initialInventory;
     private final String label;
 
     public RailConfigurationSettings(
-            String railCode, int railCapacity, double railPrice, int initialInventory, String label) {
+            String railCode, double price, int initialInventory, String label) {
 
         this.railCode = railCode;
-        this.railCapacity = railCapacity;
-        this.railPrice = railPrice;
+        this.price = price;
         this.initialInventory = initialInventory;
         this.label = label;
     }
@@ -28,11 +26,6 @@ public class RailConfigurationSettings {
         return initialInventory;
     }
 
-    int getCapacity() {
-
-        return railCapacity;
-    }
-
     String getRailCode() {
 
         return railCode;
@@ -40,7 +33,7 @@ public class RailConfigurationSettings {
 
     double getPrice() {
 
-        return railPrice;
+        return price;
     }
 
 }

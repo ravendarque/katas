@@ -1,10 +1,10 @@
 #pragma once
 #include <stdexcept>
 
-class InsufficientCreditException final : std::logic_error
+class InsufficientCreditError final : std::logic_error
 {
 public:
-	explicit InsufficientCreditException()
+	explicit InsufficientCreditError()
 		: logic_error("Insufficient credit for transaction")
 	{
 	}

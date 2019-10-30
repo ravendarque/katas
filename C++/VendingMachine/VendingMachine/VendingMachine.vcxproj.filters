@@ -24,19 +24,28 @@
     <ClInclude Include="credit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InsufficientCreditException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VendingMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NoItemsInVendException.h">
+    <ClInclude Include="Rail.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="RailEmptyError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ItemList.h">
+    <ClInclude Include="InsufficientCreditError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RailConfigurationSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RailsConfiguration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoVendSelectionError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,19 +59,19 @@
     <ClCompile Include="credit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InsufficientCreditException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VendingMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NoItemsInVendException.cpp">
+    <ClCompile Include="Rail.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="Rails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemList.cpp">
+    <ClCompile Include="RailConfigurationSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RailsConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

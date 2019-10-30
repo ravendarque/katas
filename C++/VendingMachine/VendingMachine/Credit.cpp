@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Credit.h"
-#include "InsufficientCreditException.h"
+#include "InsufficientCreditError.h"
 
 double Credit::GetValue() const
 {
@@ -15,12 +15,12 @@ void Credit::Add(const double value)
 void Credit::Spend(const double amount)
 {
 	if (amount > TotalValue)
-		throw InsufficientCreditException();
+		throw InsufficientCreditError();
 
 	TotalValue -= amount;
 }
 
-bool Credit::ValidateSpend(const double amount) const
+bool Credit::CanSpend(const double amount) const
 {
 	return amount <= TotalValue;
 }

@@ -6,9 +6,8 @@ public class Rail {
     private final String label;
     private int inventory;
 
-    public Rail(int capacity, int initialInventory, double price, String label) {
+    public Rail(int initialInventory, double price, String label) {
 
-        validateInitialInventory(capacity, initialInventory);
         validatePrice(price);
 
         this.inventory = initialInventory;
@@ -31,7 +30,7 @@ public class Rail {
         return inventory == 0;
     }
 
-    public void vendItem()
+    public void vend()
             throws RailEmptyException {
 
         if (isEmpty())
@@ -40,13 +39,7 @@ public class Rail {
         inventory--;
     }
 
-    private void validateInitialInventory(int railCapacity, int initialInventory) {
-
-        if (initialInventory > railCapacity)
-            throw new IllegalArgumentException("Initial inventory cannot be greater than rail capacity");
-    }
-
-    private void validatePrice(double price) {
+    private static void validatePrice(double price) {
 
         if (price < 0)
             throw new IllegalArgumentException("Price cannot be negative");

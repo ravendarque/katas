@@ -1,10 +1,10 @@
 package com.ravendarque.unitTests;
 
 import com.ravendarque.vendingMachine.credit.Credit;
+import com.ravendarque.vendingMachine.rails.RailConfigurationSettings;
 import com.ravendarque.vendingMachine.rails.Rails;
 import com.ravendarque.vendingMachine.rails.RailsConfiguration;
 import com.ravendarque.vendingMachine.rails.RailsConfigurationBuilder;
-import com.ravendarque.vendingMachine.rails.RailConfigurationSettings;
 import com.ravendarque.vendingMachine.vending.NoVendSelectionException;
 import com.ravendarque.vendingMachine.vending.VendingMachine;
 import org.junit.jupiter.api.Test;
@@ -15,19 +15,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VendingMachineShould {
 
-    private static final int DUMMY_CAPACITY_1 = 1;
-    private static final double DUMMY_PRICE_1 = 1;
-    private static final int DUMMY_INITIAL_INVENTORY_1 = 1;
-    private static final String DUMMY_LABEL = "Dummy label";
+    private static final String TEST_IN_STOCK_RAIL_CODE = "T1";
+    private static final String TEST_IN_STOCK_LABEL = "In stock";
 
-    private static final String TEST_RAIL_CODE_T1 = "T1";
+    private static final String TEST_IN_STOCK_EXPENSIVE_RAIL_CODE = "T2";
+    private static final String TEST_IN_STOCK_EXPENSIVE_LABEL = "Expensive";
+
+    private static final String TEST_OUT_OF_STOCK_RAIL_CODE = "T3";
+    private static final String TEST_OUT_OF_STOCK_LABEL = "Out of stock";
 
     @Test
     void returnZeroPriceWhenNoRailIsSelected() {
 
         final double expectedPrice = 0;
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
 
         final double actualTotalPrice = testVendingMachine.getSelectedRailPrice();
 
@@ -39,8 +41,8 @@ class VendingMachineShould {
 
         final double expectedPrice = 1;
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
-        testVendingMachine.selectRail(TEST_RAIL_CODE_T1);
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
+        testVendingMachine.selectRail(TEST_IN_STOCK_RAIL_CODE);
 
         final double actualPrice = testVendingMachine.getSelectedRailPrice();
 
@@ -48,30 +50,41 @@ class VendingMachineShould {
     }
 
     @Test
-    void throwExceptionWhenProcessingTransactionWithNoSelectedRail() {
+    void throwExceptionOnVendWithNoRailIsSelected() {
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
 
         assertThrows(NoVendSelectionException.class, testVendingMachine::vend);
     }
 
     @Test
-    void returnFalseWhenValidatingVendWithInsufficientCredit() {
+    void returnFalseWhenCheckingIfCanVendWithNoRailSelected() {
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
-        testVendingMachine.selectRail(TEST_RAIL_CODE_T1);
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
 
-        final boolean actualResult = testVendingMachine.canPurchaseSelectedItems();
+        final boolean actualResult = testVendingMachine.canVend();
 
         assertFalse(actualResult);
     }
 
     @Test
-    void returnFalseWhenValidatingVendWithNoItemsAdded() {
+    void returnFalseWhenCheckingIfCanVendWithEmptySelectedRail() {
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
+        testVendingMachine.selectRail(TEST_OUT_OF_STOCK_RAIL_CODE);
 
-        final boolean actualResult = testVendingMachine.canPurchaseSelectedItems();
+        final boolean actualResult = testVendingMachine.canVend();
+
+        assertFalse(actualResult);
+    }
+
+    @Test
+    void returnFalseWhenCheckingIfCanVendWithInsufficientCreditForSelectedRail() {
+
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
+        testVendingMachine.selectRail(TEST_IN_STOCK_EXPENSIVE_RAIL_CODE);
+
+        final boolean actualResult = testVendingMachine.canVend();
 
         assertFalse(actualResult);
     }
@@ -84,9 +97,9 @@ class VendingMachineShould {
 
         final double testCreditValue = 1;
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
         testVendingMachine.addCredit(testCreditValue);
-        testVendingMachine.selectRail(TEST_RAIL_CODE_T1);
+        testVendingMachine.selectRail(TEST_IN_STOCK_RAIL_CODE);
         testVendingMachine.vend();
 
         final double actualRemainingCredit = testVendingMachine.getCreditValue();
@@ -102,9 +115,9 @@ class VendingMachineShould {
 
         final double testCreditValue = 2;
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
         testVendingMachine.addCredit(testCreditValue);
-        testVendingMachine.selectRail(TEST_RAIL_CODE_T1);
+        testVendingMachine.selectRail(TEST_IN_STOCK_RAIL_CODE);
         testVendingMachine.vend();
 
         final double actualRemainingCredit = testVendingMachine.getCreditValue();
@@ -113,58 +126,96 @@ class VendingMachineShould {
     }
 
     @Test
+    void clearRailSelectionAfterSuccessfulVend()
+            throws Exception {
+
+        final double expectedPriceWhenNoRailSelected = 0;
+
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
+        testVendingMachine.selectRail(TEST_IN_STOCK_RAIL_CODE);
+
+        final double testCreditValue = 1;
+        testVendingMachine.addCredit(testCreditValue);
+
+        testVendingMachine.vend();
+
+        final double actualRailPrice = testVendingMachine.getSelectedRailPrice();
+
+        assertEquals(actualRailPrice, expectedPriceWhenNoRailSelected);
+    }
+
+    @Test
     void decrementRailInventoryAfterSuccessfulVend()
             throws Exception {
 
         final double dummyCreditValue = 2;
 
-        final VendingMachine testVendingMachine = getTestVendingMachine();
+        final VendingMachine testVendingMachine = buildTestVendingMachine();
         testVendingMachine.addCredit(dummyCreditValue);
-        testVendingMachine.selectRail(TEST_RAIL_CODE_T1);
+        testVendingMachine.selectRail(TEST_IN_STOCK_RAIL_CODE);
         testVendingMachine.vend();
-        testVendingMachine.selectRail(TEST_RAIL_CODE_T1);
+        testVendingMachine.selectRail(TEST_IN_STOCK_RAIL_CODE);
 
-        assertFalse(testVendingMachine.canPurchaseSelectedItems());
+        assertFalse(testVendingMachine.canVend());
     }
 
     @Test
     void returnRailsSummary() {
 
-        VendingMachine testVendingMachine = getTestVendingMachine();
+        VendingMachine testVendingMachine = buildTestVendingMachine();
 
         Map<String, String> actualRailsSummary = testVendingMachine.getRailsSummary();
 
-        for (Map.Entry<String, String> summaryEntry : actualRailsSummary.entrySet()) {
-            assertEquals(TEST_RAIL_CODE_T1, summaryEntry.getKey());
-            assertEquals(DUMMY_LABEL, summaryEntry.getValue());
-        }
+        assertEquals(actualRailsSummary.get(TEST_IN_STOCK_RAIL_CODE), TEST_IN_STOCK_LABEL);
+        assertEquals(actualRailsSummary.get(TEST_IN_STOCK_EXPENSIVE_RAIL_CODE), TEST_IN_STOCK_EXPENSIVE_LABEL);
+        assertEquals(actualRailsSummary.get(TEST_OUT_OF_STOCK_RAIL_CODE), TEST_OUT_OF_STOCK_LABEL);
     }
 
     @Test
     void returnFalseIfRailSelectionDoesNotExist() {
 
-        VendingMachine vendingMachine = getTestVendingMachine();
+        final String testNonExistentRailCode = "XX";
 
-        assertFalse(vendingMachine.canSelectRail("XX"));
+        VendingMachine vendingMachine = buildTestVendingMachine();
+
+        assertFalse(vendingMachine.canSelectRail(testNonExistentRailCode));
     }
 
     @Test
     void returnTrueIfRailSelectionExists() {
 
-        VendingMachine vendingMachine = getTestVendingMachine();
+        VendingMachine vendingMachine = buildTestVendingMachine();
 
-        assertTrue(vendingMachine.canSelectRail(TEST_RAIL_CODE_T1));
+        assertTrue(vendingMachine.canSelectRail(TEST_IN_STOCK_RAIL_CODE));
     }
 
-    private VendingMachine getTestVendingMachine() {
+    private VendingMachine buildTestVendingMachine() {
+
+        final double testInStockPrice = 1;
+        final int testInStockInventory = 1;
+
+        final double testInStockExpensivePrice = 2;
+        final int testInStockExpensiveInventory = 1;
+
+        final double testOutOfStockPrice = 1;
+        final int testOutOfStockInventory = 0;
 
         final RailsConfiguration testRailConfiguration = new RailsConfigurationBuilder()
                 .add(new RailConfigurationSettings(
-                        TEST_RAIL_CODE_T1,
-                        DUMMY_CAPACITY_1,
-                        DUMMY_PRICE_1,
-                        DUMMY_INITIAL_INVENTORY_1,
-                        DUMMY_LABEL))
+                        TEST_IN_STOCK_RAIL_CODE,
+                        testInStockPrice,
+                        testInStockInventory,
+                        TEST_IN_STOCK_LABEL))
+                .add(new RailConfigurationSettings(
+                        TEST_IN_STOCK_EXPENSIVE_RAIL_CODE,
+                        testInStockExpensivePrice,
+                        testInStockExpensiveInventory,
+                        TEST_IN_STOCK_EXPENSIVE_LABEL))
+                .add(new RailConfigurationSettings(
+                        TEST_OUT_OF_STOCK_RAIL_CODE,
+                        testOutOfStockPrice,
+                        testOutOfStockInventory,
+                        TEST_OUT_OF_STOCK_LABEL))
                 .build();
 
         Rails rails = new Rails(testRailConfiguration);

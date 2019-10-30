@@ -4,6 +4,6 @@ public class NoVendSelectionException extends Exception {
 
     public NoVendSelectionException() {
 
-        super("No selection to vending");
+        super("No rail has been selected to vend");
     }
 }

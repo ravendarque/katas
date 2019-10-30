@@ -22,7 +22,7 @@ public class VendingMachine {
         credit.add(creditValue);
     }
 
-    public boolean canPurchaseSelectedItems() {
+    public boolean canVend() {
 
         return rails.hasSelectedRail()
                 && !rails.getSelectedRail()
@@ -67,7 +67,7 @@ public class VendingMachine {
 
         final Rail selectedRail = rails.getSelectedRail();
         credit.spend(selectedRail.getPrice());
-        selectedRail.vendItem();
+        selectedRail.vend();
         rails.clearSelection();
     }
 }

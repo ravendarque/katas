@@ -10,3 +10,6 @@ process by which you get to it."
  ## Vending machine
    - [Java](https://github.com/ravendarque/katas/tree/master/java/VendingMachine)
    - [C++](https://github.com/ravendarque/katas/tree/master/C%2B%2B/VendingMachine)
+ 
+ ## Mars Rover
+  - [C#](https://github.com/ravendarque/katas/tree/master/C%23/MarsRover) (collaboration with Tom Bull)
